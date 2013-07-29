@@ -1,0 +1,57 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category	CosmoCommerce
+ * @package 	CosmoCommerce_Alipay
+ * @copyright	Copyright (c) 2009-2013 CosmoCommerce,LLC. (http://www.cosmocommerce.com)
+ * @contact :
+ * T: +86-021-66346672
+ * L: Shanghai,China
+ * M:sales@cosmocommerce.com
+ */
+?>
+
+
+
+<fieldset class="form-divst">
+	<?php $_code=$this->getMethodCode() ?>
+	<ul id="payment_form_<?php echo $_code ?>" style="display:none">
+		<div style="height:30px;">
+			<div style="width:120px;margin-left:10px;float:left;"><img width="100" height="20" border="0"  alt="中国工商银行" src="https://img.alipay.com/img/bank/icon_zggsyh_s_pr.gif"/></div>
+			<div style="width:120px;margin-left:10px;float:left;"><img height="20" border="0"  alt="招商银行" src="https://img.alipay.com/img/bank/icon_zsyh_s.gif"/></div>
+			<div style="width:120px;margin-left:10px;float:left;"><img height="20" border="0"  alt="中国建设银行" src="https://img.alipay.com/img/bank/icon_ccb_s.gif"/>	</div>
+			<div style="width:120px;margin-left:10px;float:left;"><img width="100" height="20" border="0"  alt="中国农业银行" src="https://img.alipay.com/img/bank/abc_pr.gif"/>  </div>  
+		</div>
+		<div style="height:30px;">
+			<div style="width:120px;margin-left:10px;float:left;"><img height="20" border="0"  alt="交通银行" src="https://img.alipay.com/img/bank/icon_comm_s.gif"/>   </div>
+			<div style="width:120px;margin-left:10px;float:left;"><img height="20" border="0"  alt="中国光大银行" src="https://img.alipay.com/img/bank/icon_cebbank_s.gif"/>    </div>
+			<div style="width:120px;margin-left:10px;float:left;"><img width="100" height="20" border="0"  alt="上海浦东发展银行" src="https://img.alipay.com/img/bank/spdb_pr.gif"/>  </div>  
+			<div style="width:120px;margin-left:10px;float:left;"><img height="20" border="0"  alt="广东发展银行" src="https://img.alipay.com/img/bank/icon_gdb_s.gif"/>   </div> 
+		</div>
+		<div style="height:30px;">
+			<div style="width:120px;margin-left:10px;float:left;"><img height="20" border="0"  alt="中信银行" src="https://img.alipay.com/img/bank/icon_itic_s.gif"/>    </div>
+			<div style="width:120px;margin-left:10px;float:left;"><img height="20" border="0"  alt="兴业银行" src="https://img.alipay.com/img/bank/index_38.gif"/>   </div> 
+			<div style="width:120px;margin-left:10px;float:left;"><img height="20" border="0"  alt="深圳发展银行" src="https://img.alipay.com/img/bank/icon_sdb_s.gif"/>   </div> 
+			<div style="width:120px;margin-left:10px;float:left;"><img height="20" border="0"  alt="中国民生银行" src="https://img.alipay.com/img/bank/icon_cmbc_s.gif"/>    </div>
+		</div>
+		<div style="height:30px;">
+			<div style="width:120px;margin-left:10px;float:left;"><img width="100" height="20" border="0"  alt="上海浦东发展银行" src="https://img.alipay.com/img/bank/spdb_co.gif"/> </div>   
+			<div style="width:120px;margin-left:10px;float:left;"><img width="100" height="20" border="0"  alt="中国工商银行" src="https://img.alipay.com/img/bank/icon_zggsyh_s_co.gif"/>  </div>  
+			<div style="width:120px;margin-left:10px;float:left;"><img width="100" height="20" border="0"  alt="中国农业银行" src="https://img.alipay.com/img/bank/abc_co.gif"/>    		</div>
+		</div>
+		<div style="clear:both;">
+			<?php echo $this->__('You will be redirected to alipay website when you place an order.') ?>
+		</div>
+	</ul>
+</fieldset>

@@ -1,0 +1,4 @@
+code                                   app/code/community/CosmoCommerce/Alipay
+frontend/template      app/design/frontend/base/default/template/alipay
+locale      app/locale
+CosmoCommerce_Alipay.xml                          app/etc/modules/CosmoCommerce_Alipay.xml
