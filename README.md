@@ -23,6 +23,8 @@ Dependency:
 
 modman init 
 
+modman clone https://github.com/cosmocommerce/magento-updater.git
+
 modman clone https://github.com/cosmocommerce/magento-alipay.git
 
 
