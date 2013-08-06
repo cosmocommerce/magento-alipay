@@ -21,11 +21,19 @@ Dependency:
 
 ##Installation##
 
-modman init 
+1 Install modman:
 
-modman clone https://github.com/cosmocommerce/magento-updater.git
+bash < <(wget -O - https://raw.github.com/colinmollenhour/modman/master/modman-installer)
 
-modman clone https://github.com/cosmocommerce/magento-alipay.git
+or
+
+bash < <(curl -s https://raw.github.com/colinmollenhour/modman/master/modman-installer)
+
+2 modman init 
+
+3 modman clone https://github.com/cosmocommerce/magento-updater.git
+
+4 modman clone https://github.com/cosmocommerce/magento-alipay.git
 
 
 ## Documentation ##
