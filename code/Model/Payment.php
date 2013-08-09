@@ -24,6 +24,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 {
     protected $_code  = 'alipay_payment';
     protected $_formBlockType = 'alipay/form';
+	protected $_gateway="https://mapi.alipay.com/gateway.do?";
 
     // Alipay return codes of payment
     const RETURN_CODE_ACCEPTED      = 'Success';
@@ -51,7 +52,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
      */
     public function getAlipayUrl()
     {
-        $url = $this->getConfigData('transport').'://'.$this->getConfigData('gateway');
+        $url = $this->_gateway;
         return $url;
     }
 
@@ -149,43 +150,61 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 		
 		
 		$converted_final_price=$order->getGrandTotal();
-		$fromCur = Mage::app()->getStore()->getCurrentCurrencyCode();
-		$toCur = 'CNY';
 		
+		if($this->getConfigData('service_type')=="create_forex_trade"){
 		
-		
-		if(Mage::app()->getStore()->getCurrentCurrencyCode() !=$toCur){
-			if(Mage::app()->getStore()->getBaseCurrencyCode()!=$toCur){
-			
-				$rate=Mage::getModel('directory/currency')->load($toCur)->getAnyRate($fromCur);
-				$converted_final_price= $order->getGrandTotal()/$rate;
-				
-			
-			}else{
-				$rate=Mage::getModel('directory/currency')->load($toCur)->getAnyRate($fromCur);
-				$converted_final_price= $order->getGrandTotal()/$rate;
-			
-			}
+			$parameter = array('service'           => $this->getConfigData('service_type'),
+							   'partner'           => $this->getConfigData('partner_id'),
+							   'return_url'        => $this->getReturnURL(),
+							   'notify_url'        => $this->getNotifyURL(),
+							   '_input_charset'    => 'utf-8',
+							   'subject'           => $order->getRealOrderId(), 
+							   'body'              => $order->getRealOrderId(),
+							   'out_trade_no'      => $order->getRealOrderId(), // order ID
+							   'total_fee'             => sprintf('%.2f', $converted_final_price) ,
+							   'currency'      => 'USD'
+							);
 		}else{
-			//$converted_final_price=$order->getGrandTotal();
+		
+			$fromCur = Mage::app()->getStore()->getCurrentCurrencyCode();
+			$toCur = 'CNY';
+			
+			
+			
+			if(Mage::app()->getStore()->getCurrentCurrencyCode() !=$toCur){
+				if(Mage::app()->getStore()->getBaseCurrencyCode()!=$toCur){
+				
+					$rate=Mage::getModel('directory/currency')->load($toCur)->getAnyRate($fromCur);
+					$converted_final_price= $order->getGrandTotal()/$rate;
+					
+				
+				}else{
+					$rate=Mage::getModel('directory/currency')->load($toCur)->getAnyRate($fromCur);
+					$converted_final_price= $order->getGrandTotal()/$rate;
+				
+				}
+			}else{
+				//$converted_final_price=$order->getGrandTotal();
+			}
+			$parameter = array('service'           => $this->getConfigData('service_type'),
+							   'partner'           => $this->getConfigData('partner_id'),
+							   'return_url'        => $this->getReturnURL(),
+							   'notify_url'        => $this->getNotifyURL(),
+							   '_input_charset'    => 'utf-8',
+							   'subject'           => $order->getRealOrderId(), 
+							   'body'              => $order->getRealOrderId(),
+							   'out_trade_no'      => $order->getRealOrderId(), // order ID
+							   'logistics_fee'     => '0.00', //because magento has shipping system, it has included shipping price
+							   'logistics_payment' => 'BUYER_PAY',  //always
+							   'logistics_type'    => 'EXPRESS', //Only three shipping method:POST,EMS,EXPRESS
+							   'price'             => sprintf('%.2f', $converted_final_price) ,
+							   'payment_type'      => '1',
+							   'quantity'          => '1', // For the moment, the parameter of price is total price, so the quantity is 1.
+							   'show_url'          => Mage::getUrl(),
+							   'seller_email'      => $this->getConfigData('seller_email')
+							);
 		}
-		$parameter = array('service'           => $this->getConfigData('service_type'),
-                           'partner'           => $this->getConfigData('partner_id'),
-                           'return_url'        => $this->getReturnURL(),
-                           'notify_url'        => $this->getNotifyURL(),
-                           '_input_charset'    => 'utf-8',
-                           'subject'           => $order->getRealOrderId(), 
-                           'body'              => $order->getRealOrderId(),
-                           'out_trade_no'      => $order->getRealOrderId(), // order ID
-                           'logistics_fee'     => '0.00', //because magento has shipping system, it has included shipping price
-                           'logistics_payment' => 'BUYER_PAY',  //always
-                           'logistics_type'    => 'EXPRESS', //Only three shipping method:POST,EMS,EXPRESS
-                           'price'             => sprintf('%.2f', $converted_final_price) ,
-                           'payment_type'      => '1',
-                           'quantity'          => '1', // For the moment, the parameter of price is total price, so the quantity is 1.
-                           'show_url'          => Mage::getUrl(),
-                           'seller_email'      => $this->getConfigData('seller_email')
-                        );
+		
 		$parameter = $this->para_filter($parameter);
 		$security_code = $this->getConfigData('security_code');
 		$sign_type = 'MD5';

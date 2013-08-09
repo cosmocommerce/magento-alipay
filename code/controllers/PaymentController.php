@@ -26,6 +26,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
      * Order instance
      */
     protected $_order;
+	protected $_gateway="https://mapi.alipay.com/gateway.do?";
 
     /**
      *  Get order
@@ -102,11 +103,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 		$_input_charset='utf-8';
 		$transport=$alipay->getConfigData('transport');
 		
-		if($transport == "https") {
-			$gateway = "https://www.alipay.com/cooperate/gateway.do?";
-		} else {
-			$gateway = "http://notify.alipay.com/trade/notify_query.do?";
-		}
+		$gateway = $this->_gateway;
 
 		if($transport == "https") {
 			$veryfy_url = $gateway. "service=notify_verify" ."&partner=" .$partner. "&notify_id=".$postData["notify_id"];

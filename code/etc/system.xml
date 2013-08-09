@@ -43,8 +43,11 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </active>
-                        <title translate="label">
+                        <title translate="label comment">
                             <label>Title</label>
+							  <comment>
+								<![CDATA[Would be displayed at the frontend payment method selection list.<br /><span class="notice">This is a required field</span>]]>
+							  </comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
                             <show_in_default>1</show_in_default>
@@ -52,8 +55,11 @@
                             <show_in_store>0</show_in_store>
                         </title>
                         
-                        <service_type translate="label">
-                            <label>Service Type</label>
+                        <service_type translate="label comment">
+                            <label>Contract Type</label>
+							  <comment>
+								<![CDATA[Contract Type with Alipay. <br /><b>Create Forex Trade</b>:Internation Payments Type,<b>Trade Create By Buyer</b><b>Create Direct Pay By User</b><b>Create Partner Trade By Buyer</b><br />If you have trouble to choose the type please contact<b>payment@cosmocommerce.com</b><br /><span class="notice">This is a required field</span>]]>
+							  </comment>
                             <frontend_type>select</frontend_type>
                             <source_model>alipay/source_servicetype</source_model>
                             <sort_order>3</sort_order>
@@ -63,38 +69,53 @@
                         </service_type>
                         <gateway translate="label">
                             <label>Gateway</label>
+							  <comment>
+								<![CDATA[Deprecated field]]>
+							  </comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>4</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </gateway>
-                        <partner_id translate="label">
+                        <partner_id translate="label comment">
                             <label>Partner ID</label>
+							  <comment>
+								<![CDATA[Please find the Partner ID at alipay merchant center.<br /><span class="notice">This is a required field</span>]]>
+							  </comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </partner_id>
-                        <security_code translate="label">
+                        <security_code translate="label comment">
                             <label>Security Code</label>
+							  <comment>
+								<![CDATA[Please find the Security Code at alipay merchant center.<br /><span class="notice">This is a required field</span>]]>
+							  </comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </security_code>
-                        <seller_email translate="label">
+                        <seller_email translate="label comment">
                             <label>Seller Email</label>
+							  <comment>
+								<![CDATA[Please fill the seller email which bind with your alipay merchant.<br /><span class="notice">This is a required field except Internation Payment Type</span>]]>
+							  </comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>7</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </seller_email>
-                        <transport translate="label">
+                        <transport translate="label comment">
                             <label>Transport</label>
+							  <comment>
+								<![CDATA[Default please select https.<br /><span class="notice">This is a required field</span>]]>
+							  </comment>
                             <frontend_type>select</frontend_type>
                             <source_model>alipay/source_transport</source_model>
                             <sort_order>8</sort_order>
