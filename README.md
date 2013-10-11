@@ -9,6 +9,12 @@ Support payment types:
 
 If you have trouble to choose the type please contact payment@cosmocommerce.com 
 
+##Issues##
+
+Before change the order status need to compare the status flow.
+
+##Change Log##
+
 ##Requirements##
 
 This module has the following requirements:
