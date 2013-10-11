@@ -129,6 +129,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 		$mysign = $this->sign($prestr.$security_code);
 		
 		
+		$sendemail=$alipay->getConfigData('sendemail');
 		Mage::log(strpos($veryfy_result,"true"));
 		
 		if ( $mysign == $postData["sign"])  {
@@ -139,65 +140,83 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
 				//$order->setAlipayTradeno($postData['trade_no']);
-				// $order->sendNewOrderEmail();
-				$order->addStatusToHistory(
-				$order->getStatus(),
-				Mage::helper('alipay')->__('等待买家付款。'));
-				try{
-					$order->save();
-					echo "success";
-				} catch(Exception $e){
-					
-				}
+                if($sendemail){
+                    $order->sendNewOrderEmail();
+                }
+                        
+                if ($order->getState() === 'processing' && $order->getState() === 'new' && $order->getState() === 'pending_payment' && $order->getState() === 'payment_review') {
+                    
+                    $order->addStatusToHistory(
+                    $order->getStatus(),
+                    Mage::helper('alipay')->__('等待买家付款。'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                        
+                    }
+                }
+                
 			}
 			else if($postData['trade_status'] == 'WAIT_SELLER_SEND_GOODS') {      //买家付款成功,等待卖家发货
 				
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
 				//$order->setAlipayTradeno($postData['trade_no']);
-				// $order->sendNewOrderEmail();
-				$order->addStatusToHistory(
-				$alipay->getConfigData('order_status_payment_accepted'),
-				Mage::helper('alipay')->__('买家付款成功,等待卖家发货。'));
-				try{
-					$order->save();
-					echo "success";
-				} catch(Exception $e){
-					
-				}
+                if($sendemail){
+                    $order->sendOrderUpdateEmail(false,'买家付款成功,等待卖家发货。');
+                }
+                if ($order->getState() === 'processing' && $order->getState() === 'new' && $order->getState() === 'pending_payment' && $order->getState() === 'payment_review') {
+                    $order->addStatusToHistory(
+                    $alipay->getConfigData('order_status_payment_accepted'),
+                    Mage::helper('alipay')->__('买家付款成功,等待卖家发货。'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                        
+                    }
+                }
 			}
 			else if($postData['trade_status'] == 'WAIT_BUYER_CONFIRM_GOODS') {    //卖家已经发货等待买家确认
 			
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
-				//$order->setAlipayTradeno($postData['trade_no']);
-				// $order->sendNewOrderEmail();
-				$order->addStatusToHistory(
-				$alipay->getConfigData('order_status_payment_accepted'),
-				Mage::helper('alipay')->__('卖家已经发货等待买家确认。'));
-				try{
-					$order->save();
-					echo "success";
-				} catch(Exception $e){
-				}
+                if ($order->getState() === 'processing' && $order->getState() === 'new' && $order->getState() === 'pending_payment' && $order->getState() === 'payment_review') {
+                    //$order->setAlipayTradeno($postData['trade_no']);
+                    if($sendemail){
+                        $order->sendOrderUpdateEmail(true,'卖家已经发货等待买家确认。');
+                    }
+                    $order->addStatusToHistory(
+                    $alipay->getConfigData('order_status_payment_accepted'),
+                    Mage::helper('alipay')->__('卖家已经发货等待买家确认。'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                    }
+                }
 
 			}
 			else if($postData['trade_status'] == 'TRADE_FINISHED' || $postData['trade_status'] == "TRADE_SUCCESS") {   
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
-				//$order->setAlipayTradeno($postData['trade_no']);
-				$order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
-				// $order->sendNewOrderEmail();
-				$order->addStatusToHistory(
-				$alipay->getConfigData('order_status_payment_accepted'),
-				Mage::helper('alipay')->__('买家已付款,交易成功结束。'));
-				try{
-					$order->save();
-					echo "success";
-				} catch(Exception $e){
-					
-				}
-
+                if ($order->getState() === 'processing' && $order->getState() === 'new' && $order->getState() === 'pending_payment' && $order->getState() === 'payment_review') {
+                    //$order->setAlipayTradeno($postData['trade_no']);
+                    $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
+                    if($sendemail){
+                        $order->sendOrderUpdateEmail(true,'买家已付款,交易成功结束。');
+                    }
+                    $order->addStatusToHistory(
+                    $alipay->getConfigData('order_status_payment_accepted'),
+                    Mage::helper('alipay')->__('买家已付款,交易成功结束。'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                        
+                    }
+                }
 			}
 			else {
 				echo "fail";
