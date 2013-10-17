@@ -168,7 +168,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 if($sendemail_wssg){
                     $order->sendOrderUpdateEmail(false,'买家付款成功,等待卖家发货。');
                 }
-                if ($order->getState() == 'processing' ||  $order->getState() == 'pending_payment' || $order->getState() == 'payment_review') {
+                if ($order->getState() == 'new' || $order->getState() == 'processing' ||  $order->getState() == 'pending_payment' || $order->getState() == 'payment_review') {
                     $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
                     $order->addStatusToHistory(
                     $alipay->getConfigData('order_status_payment_accepted'),
@@ -185,7 +185,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 			
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
-                if ($order->getState() == 'processing' || $order->getState() == 'pending_payment' || $order->getState() == 'payment_review') {
+                if ($order->getState() == 'new' || $order->getState() == 'processing' || $order->getState() == 'pending_payment' || $order->getState() == 'payment_review') {
                     //$order->setAlipayTradeno($postData['trade_no']);
                     $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
                     if($sendemail_wbcg){
@@ -205,7 +205,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 			else if($postData['trade_status'] == 'TRADE_FINISHED' || $postData['trade_status'] == "TRADE_SUCCESS") {   
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
-                if ($order->getState() == 'processing' || $order->getState() == 'pending_payment' || $order->getState() == 'payment_review') {
+                if ($order->getState() == 'new' || $order->getState() == 'processing' || $order->getState() == 'pending_payment' || $order->getState() == 'payment_review') {
                     //$order->setAlipayTradeno($postData['trade_no']);
                     $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
                     if($sendemail){
