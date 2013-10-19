@@ -63,7 +63,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
      */
 	protected function getReturnURL()
 	{
-		return Mage::getUrl('checkout/onepage/success', array('_secure' => true));
+		return Mage::getUrl('alipay/payment/notify/', array('_secure' => true));
 	}
 
 	/**
