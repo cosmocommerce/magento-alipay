@@ -75,6 +75,8 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         ->toHtml());
 
         $session->unsQuoteId();
+        $this->loadLayout();
+        $this->renderLayout();
     }
 
     public function notifyAction()
