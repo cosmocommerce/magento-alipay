@@ -11,7 +11,7 @@
 			</action>
         </reference>
         <reference name="content">
-            <block type="alipay/redirect" name="redirect" before="*" />
+            <block type="alipay/redirect" name="redirect" before="*" template="alipay/redirect.phtml" />
         </reference>
     </alipay_redirect>
 </layout> 
