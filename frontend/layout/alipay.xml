@@ -1,17 +1,28 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
 
-    <alipay_redirect>
+    <alipay_payment_redirect>
         <reference name="root">
-			<action method="setTemplate">
-				<template>page/1column.phtml</template>
-				<action method="setIsHandle">
-					<applied>1</applied>
-				</action>
-			</action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content"> 
+            <block type="core/template" name="redirect" before="*" template="alipay/redirect.phtml" />
+        </reference>
+    </alipay_payment_redirect>
+    
+    <alipay_success_test>
+            <block type="page/html" name="root" output="toHtml" template="alipay/redirect.phtml" />
+    </alipay_success_test>
+    
+    
+    <alipay_payment_test>
+            <block type="page/html" name="root" output="toHtml" template="alipay/redirect.phtml" />
+        <!--
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
-            <block type="alipay/redirect" name="redirect" before="*" template="alipay/redirect.phtml" />
-        </reference>
-    </alipay_redirect>
+            <block type="core/template" name="redirect" before="*" template="alipay/redirect.phtml" />
+        </reference>-->
+    </alipay_payment_test>
 </layout> 

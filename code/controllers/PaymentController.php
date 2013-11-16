@@ -68,11 +68,14 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         );
         $order->save();
 
+        
+        /*
         $this->getResponse()
         ->setBody($this->getLayout()
         ->createBlock('alipay/redirect')
         ->setOrder($order)
         ->toHtml());
+        */
 
         $session->unsQuoteId();
         $this->loadLayout();
