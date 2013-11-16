@@ -1,5 +1,6 @@
 code                                   app/code/community/CosmoCommerce/Alipay
 frontend/template      app/design/frontend/base/default/template/alipay
+frontend/layout/alipay.xml      app/design/frontend/base/default/layout/alipay.xml
 locale/zh_CN/CosmoCommerce_Alipay.csv      app/locale/zh_CN/CosmoCommerce_Alipay.csv
 locale/en_US/CosmoCommerce_Alipay.csv      app/locale/en_US/CosmoCommerce_Alipay.csv
 CosmoCommerce_Alipay.xml                          app/etc/modules/CosmoCommerce_Alipay.xml
