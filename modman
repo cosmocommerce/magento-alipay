@@ -4,3 +4,4 @@ frontend/layout/alipay.xml      app/design/frontend/base/default/layout/alipay.x
 locale/zh_CN/CosmoCommerce_Alipay.csv      app/locale/zh_CN/CosmoCommerce_Alipay.csv
 locale/en_US/CosmoCommerce_Alipay.csv      app/locale/en_US/CosmoCommerce_Alipay.csv
 CosmoCommerce_Alipay.xml                          app/etc/modules/CosmoCommerce_Alipay.xml
+skin/alipay.css      skin/frontend/base/default/css/alipay.css

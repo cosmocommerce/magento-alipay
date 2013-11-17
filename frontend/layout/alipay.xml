@@ -5,6 +5,9 @@
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/alipay.css</stylesheet></action>
+        </reference>
         <reference name="content"> 
             <action method="setTemplate"><template>alipay/payment.phtml</template></action>
             <block type="alipay/redirect" name="redirect" as="redirect"  before="*" template="alipay/redirect.phtml" />

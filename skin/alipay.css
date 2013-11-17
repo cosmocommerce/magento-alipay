@@ -1,0 +1,103 @@
+.masks{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;_position:absolute;_top:expression(eval(document.documentElement.scrollTop));_height:expression(eval(document.documentElement.clientHeight));background-color:#000;filter:alpha(opacity=20);opacity:0.2;}
+/*public*/
+.red{color:#c30;}
+.gray{color:#969696;}
+.shortcut_wrapper a{color:#1a66b3;text-decoration:none;}
+.shortcut_wrapper a:hover{color:#1a66b3;text-decoration:underline;}
+/*images*/
+.shortcut_bank_list h5 a,.shortcut_bank_list .btn a,.shortcut_bank .btn02 .icon,.shortcut_content .btn_next a{background-image:url(../images/shortcut_sprite.png);background-repeat:no-repeat;}
+/*clearfix*/
+.shortcut_bank_list h5:after,.shortcut_bank_list .bank:after,.shortcut_bank_table td p:after,.shortcut_bank_box:after{clear:both;content:" ";display:block;font-size:0;height:0;visibility:hidden;}
+.shortcut_bank_list h5,.shortcut_bank_list .bank,.shortcut_bank_table td p,.shortcut_bank_box{zoom:1;}
+
+/*shortcut_wrapper*/
+.shortcut_wrapper{width:960px;margin:15px auto 0;font:12px 'Arial','\5B8B\4F53';color:#404040;}
+.shortcut_wrapper .shortcut_price{width:876px;padding:15px 42px 30px;color:#8d8c8b;background-color:#f7f4f0;}
+.shortcut_wrapper .shortcut_price p{padding-top:8px;}
+.shortcut_wrapper .shortcut_price .price{color:#404040;font:14px 'Arial','\5fae\8f6f\96c5\9ed1';}
+.shortcut_wrapper .shortcut_price span{display:inline-block;padding-right:50px;}
+.shortcut_wrapper .shortcut_price .red{font:bold 20px 'Arial';}
+
+.shortcut_wrapper .shortcut_content{width:920px;border:5px solid #efeae5;padding:12px 15px;margin:10px auto 0;}
+.shortcut_content .tophint{width:810px;background-color:#fff5e6;color:#7b6e65;line-height:20px;padding:15px 20px 20px 90px;position:relative;}
+.shortcut_content .tophint b{position:absolute;top:15px;left:20px;}
+.shortcut_content h3{font-size:14px;font-weight:bold;padding-top:30px;}
+.shortcut_content h3 .gray{font-size:12px;padding-left:15px;font-weight:normal;}
+.shortcut_content h4{border-bottom:1px solid #ff8e42;height:38px;margin:30px auto 15px;}
+.shortcut_content h4 span{float:left;width:117px;height:33px;text-align:center;font:14px/33px '\5fae\8f6f\96c5\9ed1';background-color:#fff5e6;border:1px solid #f4e2d8;border-bottom:none;color:#544133;cursor:default;margin:4px 4px 0 0;}
+.shortcut_content h4 span.now{color:#f60;margin:0 4px -1px 0;height:38px;line-height:38px;background-color:#fff;border:1px solid #ff8e42;border-bottom:none;position:relative;}
+.shortcut_content h4 a{font:12px '\5B8B\4F53';float:right;margin-top:15px;}
+/*shortcut_bank*/
+.shortcut_bank{padding-top:15px;width:950px;margin:0 -15px;position:relative;}
+.shortcut_bank .shortcut_bank_list{padding:15px 0 15px;position:relative;}
+.shortcut_bank .list_deep{background-color:#fdfbf8;zoom:1;}
+.shortcut_bank_list h5{padding:0 0 5px 15px;height:16px;line-height:16px;}
+.shortcut_bank_list h5 span,.shortcut_bank_list h5 a{float:left;font-size:14px;}
+.shortcut_bank_list h5 .icon{width:4px;height:14px;line-height:0;font-size:0;overflow:hidden;background-color:#fea125;margin-right:12px;font-size:12px;}
+.shortcut_bank_list h5 .gray{margin:0 12px 0 10px;font-size:12px;}
+.shortcut_bank_list h5 a,.shortcut_bank_list h5 a:hover{background-position:0 0;width:13px;height:13px;line-height:0;font-size:0;overflow:hidden;margin-top:2px;}
+.shortcut_bank_list h5 a.up{background-position:-14px 0;}
+.shortcut_bank_list .bank{padding:25px 0 0 30px;height:16px;line-height:16px;}
+.shortcut_bank_list .bank input{float:left;margin:0;margin:-4px\9;}
+.shortcut_bank_list .bank span{float:left;}
+.shortcut_bank_list .bank .text{margin:0 0 0 40px;color:#646464;}
+.shortcut_bank_list .bank .text b{font-size:14px;font-weight:bold;padding-left:3px;}
+.shortcut_bank_list .bank .icon{height:16px;float:left;margin:0 8px 0 14px;}
+.shortcut_bank_list .bank .gray{margin-left:8px;}
+.shortcut_bank_list .bank a{margin-left:10px;}
+.shortcut_bank_list .btn{padding:25px 0 0 56px;}
+.shortcut_bank_list .btn a,.shortcut_bank_list .btn a:hover{display:inline-block;width:95px;height:30px;font:14px/30px '\5fae\8f6f\96c5\9ed1';color:#fff;background-repeat:repeat-x;background-position:0 -15px;text-align:center;border-radius:3px;text-decoration:none;}
+.shortcut_bank_list .btn a:hover{background-position:0 -45px;}
+.shortcut_bank_list .bank02{height:auto;padding-top:20px;}
+.shortcut_bank_list .bank02 input{margin:13px 0 0;margin:8px 0 0\9;}
+.shortcut_bank_list .bank .pic{height:36px;border:1px solid #ccc;position:relative;padding-right:32px;}
+.shortcut_bank_list .bank .pic img{float:left;}
+.shortcut_bank_list .bank .pic .gray{margin:10px 0 0 8px;}
+.shortcut_bank_list .bank .pic .icon{padding-left:2px;height:14px;width:27px;line-height:12px;line-height:14px\9;*line-height:16px;text-align:center;color:#fff;background-color:#f60;border-radius:2px;position:absolute;bottom:-1px;right:-1px;margin:0;overflow:hidden;}
+/*bottom_hint*/
+.bottom_hint{color:#646464;padding:20px 20px 0;line-height:20px;}
+.bottom_hint .title{margin:12px 0 -6px;font-weight:bold;}
+.bottom_hint p{padding:13px 0 7px;}
+.bottom_hint p .gray{display:block;}
+/*shortcut_bank_table*/
+.shortcut_content02 .shortcut_bank{margin:-15px 0 0;width:920px;overflow:hidden;padding-top:0;}
+.shortcut_content02 h4 span.now{background-color:#FDFBF8;}
+.shortcut_bank_table{width:896px;float:left;}
+.shortcut_bank_table td{width:180px;vertical-align:top;text-align:left;padding-top:10px;}
+.shortcut_bank_box{ position:relative;padding-left:24px;width: 896px;}
+.shortcut_bank_table td p input{float:left;margin:13px 0 0;margin:8px -4px 0\9;position:relative;}
+.shortcut_bank_table td p .pic{float:right;border:1px solid #ccc;margin-right:11px;padding-right:30px;position:relative;background:#fff;width:113px;_display:inline;}
+.shortcut_bank_table td p.hint{color:#f60;font-size:12px;padding:5px 0 0 23px;width:142px;overflow:hidden;line-height:16px;}
+.shortcut_bank_table td p .icon{font-size:12px;padding-left:2px;height:14px;width:27px;line-height:12px;line-height:14px\9;*line-height:16px;text-align:center;color:#fff;background-color:#f60;border-radius:2px;position:absolute;bottom:-1px;right:-1px;margin:0;overflow:hidden;}
+.shortcut_bank .btn02{padding:20px 0 30px 45px;width:875px;position: relative;}
+.shortcut_bank .btn03{padding:20px 0 10px 55px;}
+.shortcut_bank .btn02 a,.shortcut_bank .btn02 a:hover{text-decoration:none;height:16px;display:inline-block;position:relative;padding-right:20px;}
+.shortcut_bank .btn02 .icon{top:0;position:absolute;right:0;background-position:0 0;width:13px;height:13px;line-height:0;font-size:0;overflow:hidden;margin-top:2px;}
+.shortcut_bank .btn02 .up{background-position:-14px 0;}
+.shortcut_content02 .btn_next{padding:25px 0 0 45px;}
+.shortcut_content .btn_next a,.shortcut_content .btn_next a:hover{display:inline-block;width:130px;height:30px;background-position:0 -15px;background-repeat:repeat-x;border-radius:3px;font:14px/30px '\5fae\8f6f\96c5\9ed1';color:#fff;text-align:center;text-decoration:none;margin-bottom:10px;}
+.shortcut_content .btn_next a:hover{background-position:0 -45px;}
+/*.shortcut_content .btn_next a.none,.shortcut_content02 .btn_next a.none:hover{background-position:0 -75px;cursor:default;color:#747474;}  comment by zhangjing*/
+.shortcut_bank_web td p .pic{padding-right:0;width:143px;text-align:center;}
+.shortcut_bank_list_loading{height:82px;background:url(../images/loading2.gif) no-repeat center center;}
+
+/*bank03*/
+.shortcut_bank_list .bank03{height:auto;padding:0 0 0 5px;color:#646464;}
+.shortcut_bank_list .bank03 .text{_display:inline;margin:9px 0 0 10px;}
+.shortcut_bank_list .bank03 input{float:left;margin:20px 10px 0 10px;margin:16px 6px 0 6px\9;}
+.shortcut_bank_list .bank03 .gray{margin-top:18px;}
+.shortcut_bank_list .btn_bank03{padding:30px 0 0 10px;}
+.shortcut_bank .logo_cf{position:absolute;right:15px;bottom:30px;text-align:right;}
+.shortcut_bank .logo_cf span{display:block;margin-top:6px;color:#969696;}
+.shortcut_bank_list .bank03 .yixuan{float:left;margin-left:15px;width:147px;}
+.shortcut_bank_list .bank span.hint{color:#f60;display:block;padding-top:5px;}
+.shortcut_bank_list h5 .fanxian{float:right;font-size:12px;}
+
+/*zhangjing*/
+span.pic{background: #fff;}
+input[name=bank]{cursor:pointer;}
+span.pic img{cursor:pointer;}
+.shortcut_bank_list .bank02 input{margin-right:10px;}
+#go_tab1{cursor:pointer;}
+#go_tab2{cursor:pointer;}
+#go_tab3{cursor:pointer;}
