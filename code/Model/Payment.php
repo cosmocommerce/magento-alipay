@@ -131,7 +131,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
      */
     public function getOrderPlaceRedirectUrl()
     {
-        return Mage::getUrl('alipay/payment/redirect');
+        return Mage::getUrl('alipay/payment/pay');
     }
 
     /**

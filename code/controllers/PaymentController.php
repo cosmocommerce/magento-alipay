@@ -49,6 +49,32 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
      * When a customer chooses Alipay on Checkout/Payment page
      *
      */
+     
+    public function payAction()
+    {
+        $session = Mage::getSingleton('checkout/session');
+        $session->setAlipayPaymentQuoteId($session->getQuoteId());
+
+        $order = $this->getOrder();
+
+        if (!$order->getId())
+        {
+            $this->norouteAction();
+            return;
+        }
+
+        $order->addStatusToHistory(
+        $order->getStatus(),
+        Mage::helper('alipay')->__('Customer was redirected to payment center')
+        );
+        $order->save();
+
+        
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+    
     public function redirectAction()
     {
         $session = Mage::getSingleton('checkout/session');
@@ -69,17 +95,13 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         $order->save();
 
         
-        /*
         $this->getResponse()
         ->setBody($this->getLayout()
         ->createBlock('alipay/redirect')
         ->setOrder($order)
         ->toHtml());
-        */
 
         $session->unsQuoteId();
-        $this->loadLayout();
-        $this->renderLayout();
     }
 
     public function notifyAction()
