@@ -104,8 +104,8 @@ span.pic img{cursor:pointer;}
 
 
 
-/* 名称：popup
-   用途：弹窗样式
+/* 鍚嶇О锛歱opup
+   鐢ㄩ�旓細寮圭獥鏍峰紡
 ======================================== */
 .popup-wrap { position:absolute; color:#404040;font:12px/18px Arial,"\5b8b\4f53"; background:#fff; -webkit-box-shadow:1px 2px 5px #bbb; -moz-box-shadow:1px 2px 5px #bbb; box-shadow:1px 2px 5px #bbb; z-index:999;}
 .popup-wrap a{ text-decoration:none; color:#1a66b3; }

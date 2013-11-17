@@ -29,10 +29,27 @@ $_order->loadByIncrementId($session->getLastRealOrderId());
                         </ul>
                         </div>
                     </div>
+                    <button type="submit" title="下订单" class="button btn-checkout" onclick="payorder();"><span><span>下订单</span></span></button>
+                    <script type="text/javascript">
+                    function payorder(){
+                    
+                        var left  = (jQuery(window).width()/2)-(900/2),
+                        top   = (jQuery(window).height()/2)-(600/2);
+    
+    
+                        window.open('<?php echo $this->getUrl('alipay/payment/redirect'); ?>', 'alipay', "width=900, height=600, top="+top+", left="+left);
+                        
+                        var left  = (jQuery(window).width()/2)-(392/2),
+                        top   = (jQuery(window).height()/2)-(160/2);
+                        jQuery('#go_pay_window').show();
+                        jQuery('#go_pay_window').css('left',left+"px");
+                        jQuery('#go_pay_window').css('top',top+"px");
+
+                        
+                    }</script>
                     <?php
-                    echo $this->getChildHtml('redirect');
+                    //echo $this->getChildHtml('redirect');
                     ?>
-                    <div class="btn_next"><a name="payhref" class="" onclick="javascript:return pay();" href="javascript:__doPostBack('ctl07','')">点击支付</a></div>
                 </div>
             </div>    
         </div>
@@ -43,4 +60,47 @@ $_order->loadByIncrementId($session->getLastRealOrderId());
     <p>联系我们 <span class="gray"> 客服帮助您解决支付过程中遇到的困难 <a href="<?php echo $this->getUrl('contacts'); ?>" target="_blank" >客服中心</a> </span></p>
     <div><a href="http://help.alipay.com/lab/index.htm" target="_blank">支付宝帮助中心&nbsp;&gt;&gt;</a></div>
   </div>
+</div>
+
+<div class="popup-wrap popup-orderEnd" style="display:none;" id="go_pay_window">
+    <div class="popup-title">
+        <h3>温馨提示</h3>
+        <a class="btn-popup-close" href="javascript:window_close();"></a>
+    </div>
+    <div class="popup-cont">
+        <p><i class="icon icon-warn-normal"></i>请您到新打开网银页面上进行支付，支付完成前请不要关闭该窗口。</p>
+        <p class="btn-bar">
+            <button class="button btn-checkout" id="pay_suc_link" onclick="setLocation('<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>');"><span><span>已完成支付</span></span></button>
+            <button class="button btn-checkout" id="pay_fail_link" onclick="setLocation('<?php echo $this->getUrl('contacts'); ?>');"><span><span>支付遇到问题</span></span></button>
+        </p>
+    </div>
+</div>
+<div class="popup-wrap popup-orderEnd" style="display:none;"  id="go_pay_error_window">
+    <div class="popup-title">
+        <h3>温馨提示</h3>
+        <a class="btn-popup-close" href="javascript:window_close();"></a>
+    </div>
+    <div class="popup-cont">
+        <p><i class="icon icon-warn-normal"></i>如果您的支付遇到问题，请查看<a href="http://support.dangdang.com/helpcenter/api_cms/helpcenter/index/index.shtml" id="pay_help_link" target="_blank">支付帮助</a>，或致电客服010-51236699、400-1066666</p>
+    </div>
+</div>
+<div class="popup-wrap popup-orderEnd" style="display:none;"  id="pay_fin_window">
+    <div class="popup-title">
+        <h3>温馨提示</h3>
+        <a class="btn-popup-close" href="javascript:window_close();"></a>
+    </div>
+    <div class="popup-cont">
+        <p><i class="icon icon-success-normal"></i>如果您已经完成支付，请查看<a href="http://order.dangdang.com/myallorders" id="order_list_link2" target="_blank">订单详情</a></p>
+    </div>
+</div>
+<div class="popup-wrap popup-orderEnd" style="display:none;"  id="pay_fin_continue_submit_window">
+    <div class="popup-title">
+        <h3>温馨提示</h3>
+        <a class="btn-popup-close" href="javascript:window_close();"></a>
+    </div>
+    <div class="popup-cont">
+        <p><i class="icon icon-success-normal"></i>如果您已经完成支付，请查看<a href="http://order.dangdang.com/myallorders" id="order_list_link">订单详情</a></p>
+        <p id="presubmit_order_num" class="p-f12">提示：您还有 0 张“待提交”订单</p>
+        <p class="btn-bar"><a href="http://shopping.dangdang.com/shoppingcart/dispart_order.aspx" id="continue_submit_link" class="btn btn-small-orange mr-10" target="_blank">继续提交</a><a href="javascript:window_close();" class="btn btn-small-grey">取&nbsp;&nbsp;消</a></p>
+   </div>
 </div>

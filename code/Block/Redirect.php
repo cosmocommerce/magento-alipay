@@ -23,23 +23,6 @@
 class CosmoCommerce_Alipay_Block_Redirect extends Mage_Core_Block_Abstract
 {
 
-    protected $_order;
-    protected function _construct()
-    {   
-        parent::_construct();
-    }
-
-    public function getOrder()
-    {
-        if ($this->_order == null)
-        {
-            $session = Mage::getSingleton('checkout/session');
-            $this->_order = Mage::getModel('sales/order');
-            
-            $this->_order->loadByIncrementId($session->getLastRealOrderId());
-        }
-        return $this->_order;
-    }
 	protected function _toHtml()
 	{
 		$standard = Mage::getModel('alipay/payment');
@@ -52,12 +35,16 @@ class CosmoCommerce_Alipay_Block_Redirect extends Mage_Core_Block_Abstract
         foreach ($standard->setOrder($this->getOrder())->getStandardCheckoutFormFields() as $field => $value) {
             $form->addField($field, 'hidden', array('name' => $field, 'value' => $value));
         }
-        
+
         $formHTML = $form->toHtml();
-        $html= $formHTML;
-        $html.="<script type='text/javascript'>function payorder(){document.getElementById('alipay_payment_checkout').submit();}</script>";
-        $html.= '
-        <button type="submit" title="下订单" class="button btn-checkout" onclick="payorder();"><span><span>下订单</span></span></button>';
+
+        $html = '<html><body>';
+        $html.= $this->__('You will be redirected to Alipay in a few seconds.');
+        $html.= $formHTML;
+        //$html.="<script type="text/javascript">window.open('http://www.baidu.com', 'window name', 'window settings');</script>";
+        $html.= '<script type="text/javascript">document.getElementById("alipay_payment_checkout").submit();</script>';
+        $html.= '</body></html>';
+
 
         return $html;
     }

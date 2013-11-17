@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
     
-    <alipay_payment_redirect>
+    <alipay_payment_pay>
         <reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
@@ -14,6 +14,6 @@
                 <block type="alipay/redirect" name="redirect" as="redirect"  before="*"  />
             </block>
         </reference>
-    </alipay_payment_redirect>
+    </alipay_payment_pay>
     
 </layout> 
