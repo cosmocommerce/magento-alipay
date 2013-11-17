@@ -1,1 +1,46 @@
-payment
+<?php
+
+$session = Mage::getSingleton('checkout/session');
+$_order = Mage::getModel('sales/order');
+
+$_order->loadByIncrementId($session->getLastRealOrderId());
+?>
+<div class="shortcut_wrapper">
+    <div class="shortcut_price">
+        <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
+        <p><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo"><?php echo ($_order->getRealOrderId()) ?> </span></span></p>
+    </div>
+          
+    <div class="shortcut_content shortcut_content02">
+        <div id="paycenter_area">
+            <h4><span id="go_tab3" class="now">支付平台</span></h4>
+            <div id="tab3" class="shortcut_bank" style="display: block;">
+
+                <div id="tab3firstpay" style="display:block;">
+                    <div class="shortcut_bank_list list_deep">
+                        <h5><span class="icon"></span><span>支付平台</span></h5>
+                        <div class="shortcut_bank_box"> 
+                        <ul  class="shortcut_bank_table shortcut_bank_web">
+
+                        <li class="bank_item">
+                        <p class="bank_select" bid="51"><input type="radio" name="bank" checked="checked"><span class="pic"><img src="<?php echo $this->getSkinUrl('images/alipay.gif'); ?>" id="Repeater2_ctl03_imgBank2" width="113" height="36"></span></p>
+                        <p class="hint">中国最大的第三方支付方式</p>                  
+                        </li>      
+                        </ul>
+                        </div>
+                    </div>
+                    <?php
+                    echo $this->getChildHtml('redirect');
+                    ?>
+                    <div class="btn_next"><a name="payhref" class="" onclick="javascript:return pay();" href="javascript:__doPostBack('ctl07','')">点击支付</a></div>
+                </div>
+            </div>    
+        </div>
+    </div>
+  <div class="bottom_hint">
+    <div><a href="<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>" target="_blank">查看订单详情&gt;&gt;</a></div>
+    <div class="title">付款遇到问题：</div>
+    <p>联系我们 <span class="gray"> 客服帮助您解决支付过程中遇到的困难 <a href="<?php echo $this->getUrl('contacts'); ?>" target="_blank" >客服中心</a> </span></p>
+    <div><a href="http://help.alipay.com/lab/index.htm" target="_blank">支付宝帮助中心&nbsp;&gt;&gt;</a></div>
+  </div>
+</div>
