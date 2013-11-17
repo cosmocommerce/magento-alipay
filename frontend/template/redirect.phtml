@@ -1,1 +1,878 @@
-提交支付  支付失败
+<div class="shortcut_wrapper">
+          <div class="shortcut_price">
+            <p class="price">支付金额：<span class="red">¥<span id="lblAmount">209.00</span></span></p>
+            <p><span>收款方：当当网</span><span>类型：<span id="lblType">订单</span></span><span>编号：<span id="lblNo">7050902468</span></span></p>
+          </div>
+          <div class="shortcut_content shortcut_content02">
+            <div id="top_hint" class="tophint" style="display:none;"><b>温馨提示</b><p id="bank_tips" class="banktips" style="display:none;"></p></div>
+            <h3><span id="info_h3">选择网上银行或平台支付</span><span id="indo_array" class="gray"></span><a href="javascript:showallbank(5);" id="bind_area_go_else_link" style="display:none;font-size: 12px;padding-left:30px;font-weight:normal;">选取其他付款方式</a></h3>
+            <div id="confirm_net_bank_area" style="display:none;padding-top:15px;" class="shortcut_bank">
+                <div class="shortcut_bank_list">
+                <div class="bank bank03"><span class="text">您选择的银行是</span><p class="yixuan"><span class="pic"><img src="http://payment.dangdang.com/images/pay_zxzf.gif" id="netbanckselectimg" width="113" height="36"><span class="icon" id="netbankselecttype"></span></span><span class="hint" id="selecthint"></span></p><span class="text"><a href="javascript:showallbank(5);" style="text-decoration:none;">选择其他银行&nbsp;&gt;&gt;</a></span></div>
+                <div class="btn_bank03 btn_next"><a id="confirm_net_bank_a" href="javascript:__doPostBack('confirm_net_bank_a','')">下一步</a></div>            
+            </div>
+            </div>
+            <div id="bind_card_area" style="display:none;position:relative;">
+                <div class="shortcut_bank_list_loading" id="loading_bind"></div>
+                <iframe id="bind_card_iframe" style="margin-top:20px;width:550px;border:0;display:none;" frameborder="0" scrolling="no"></iframe>
+                <div class="logo_cf" style="top:30px;position:absolute;right:15px;text-align:right;"><img src="images/logo_cf.png" width="133" height="33"><span style="display:block;margin-top:6px;color:#969696;">快捷支付服务由当当网和财付通联合提供</span></div> 
+            </div>
+            
+            <div id="paycenter_area">
+            <h4><a href="http://newaccount.dangdang.com/payhistory/myfastpayment.aspx" id="my_fp_link" target="_blank">管理我的快捷支付&nbsp;&gt;&gt;</a><span id="go_tab1" class="">储蓄卡</span><span id="go_tab2" class="">信用卡</span><span id="go_tab3" class="now">支付平台</span></h4>
+            <div id="tab1" class="shortcut_bank" style="display: none;">
+                <div id="tab1secondpay" style="display:none;">
+                <div class="shortcut_bank_list list_deep"> 
+                    <h5><span class="fanxian"><a href="http://t.dangdang.com/20131106_uovs" id="fp_promo_link1" target="_blank" style="background-image:none;line-height:normal;font-size:12px;margin-top:0px;overflow:auto;height:auto;width:auto;text-decoration:none;">快捷支付100%返现金，最高返百元！</a></span><span class="icon"></span><span>快捷支付</span><span class="gray">无需开通网银也能支付</span><a href="javascript:showiframe(1);" id="returnfastpaylink1" style="display:none;background-image:none;line-height:normal;font-size:12px;margin-top:0px;overflow:auto;height:auto;width:auto;text-decoration:none;">&lt;&lt; 返回我的快捷支付</a></h5> 
+                    <div id="tab1secondpayfastbank" style="display:none;">
+                        <div id="tab1fpiframediv" style="display:none;margin-left:44px;">
+                            <div class="shortcut_bank_list_loading" id="loading1"></div>
+                            <iframe id="tab1fpiframe" style="border: 0px; width: 650px; margin-top: 10px; display: none;" frameborder="0" allowtransparency="true" scrolling="no" src=""></iframe>
+                        </div>
+                        <div class="btn03">
+                        <a href="javascript:showallbank(1);" style="text-decoration:none;">选择其他银行&nbsp;&gt;&gt;</a>
+                        </div>
+                        <!--<div class="logo_cf"><img src="images/logo_cf.png" width="133" height="33"><span>快捷支付服务由当当网和财付通联合提供</span></div>-->
+                    </div>
+                    
+                    <div id="tab1secondpayfastbankall" style="display:block;">
+                    <div class="shortcut_bank_box">
+                    <table border="0" cellspacing="0" cellpadding="0" class="shortcut_bank_table">
+                  <tbody><tr>
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="164"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_jianshe.gif" id="Repeater7_ctl00_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="165"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhaoshang.gif" id="Repeater7_ctl01_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="162"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_nongye.gif" id="Repeater7_ctl02_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="167"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_guangda.gif" id="Repeater7_ctl03_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="172"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_guangfa.gif" id="Repeater7_ctl04_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="166"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_pingan.gif" id="Repeater7_ctl05_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="170"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhongxin.gif" id="Repeater7_ctl06_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="171"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_minsheng.gif" id="Repeater7_ctl07_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="173"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_shanghai.gif" id="Repeater7_ctl08_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="174"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_huarun.gif" id="Repeater7_ctl09_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                       
+                  </tr>
+                </tbody></table></div>
+               <div class="btn02"></div> 
+                </div>
+                
+                    <h5><span class="icon"></span><span>网银支付</span><span class="gray">您需要先拥有一张已开通网上支付功能的银行卡</span></h5> 
+                    <div id="tab1secondpaynetbank">
+                        <div id="tab1secondpaynetbankother" style="display:none;">
+                            <div class="btn03">
+                            <a href="javascript:showallbank(3);" style="text-decoration:none;">选择其他银行&nbsp;&gt;&gt;</a>
+                            </div>
+                        </div>
+                       <div id="tab1secondpaynetbankdefault">
+                        <p class="bank_select bank bank02" bid="0"><input name="bank" type="radio" value="1" checked="checked"><span class="pic"><img src="images/bank/pay_beijing.gif" id="imgDefault" width="113" height="36"><span class="icon">储蓄</span></span></p>
+                        <div class="btn03">
+                        <a href="javascript:showallbank(3);" style="text-decoration:none;">选择其他银行&nbsp;&gt;&gt;</a>
+                        </div>
+                        <!--<div class="btn"><a href="javascript:__doPostBack('ctl05','')">确认支付</a></div>-->
+                       </div>
+                       <div id="tab1secondpaynetbankall" style="display:none;">
+                       <div class="shortcut_bank_box">
+                            <table border="0" cellspacing="0" cellpadding="0" class="shortcut_bank_table shortcut_bank_web">
+                      <tbody>
+                      <tr>
+                        
+                            </tr><tr></tr><tr>                     
+                            <td class="bank_item">
+                            <p class="bank_select" bid="48"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gs.gif" id="Repeater9_ctl00_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item">
+                            <p class="bank_select" bid="4"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zs.gif" id="Repeater9_ctl01_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item">
+                            <p class="bank_select" bid="6"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_js.gif" id="Repeater9_ctl02_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item">
+                            <p class="bank_select" bid="67"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zg.gif" id="Repeater9_ctl03_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item">
+                            <p class="bank_select" bid="45"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_ny.gif" id="Repeater9_ctl04_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                            </tr><tr></tr><tr>                     
+                            <td class="bank_item">
+                            <p class="bank_select" bid="69"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_jt.gif" id="Repeater9_ctl05_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item">
+                            <p class="bank_select" bid="57"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zx.gif" id="Repeater9_ctl06_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item">
+                            <p class="bank_select" bid="59"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_ms.gif" id="Repeater9_ctl07_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item">
+                            <p class="bank_select" bid="60"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gf.gif" id="Repeater9_ctl08_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item">
+                            <p class="bank_select" bid="61"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_xy.gif" id="Repeater9_ctl09_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                            </tr><tr></tr><tr>                     
+                            <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                            <p class="bank_select" bid="70"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_pf.gif" id="Repeater9_ctl10_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                            <p class="bank_select" bid="63"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_bj.gif" id="Repeater9_ctl11_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                            <p class="bank_select" bid="72"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_yz.gif" id="Repeater9_ctl12_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                            <p class="bank_select" bid="71"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gd.gif" id="Repeater9_ctl13_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                        
+                                                 
+                            <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                            <p class="bank_select" bid="66"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_sz.gif" id="Repeater9_ctl14_imgBank3" width="113" height="36"></span></p>
+                            <p class="hint"></p>                  
+                            </td>                                     
+                                        
+                    </tr>
+                    </tbody></table></div>
+                    <div class="btn02"><a id="tab1showmorenetbank1" href="javascript:void(0);">更多在线支付银行<span class="icon"></span></a></div>
+                       </div>
+                    </div>
+                </div>
+               <div id="tab1button1" class="btn_next"><a id="tab1nextbutton" name="payhref" href="javascript:__doPostBack('tab1nextbutton','')" class="none">下一步</a></div>  
+                </div> 
+                <div id="tab1firstpay" style="display:block;">
+              <div class="shortcut_bank_list list_deep">
+                <h5><span class="fanxian"><a href="http://t.dangdang.com/20131106_uovs" id="fp_promo_link2" target="_blank" style="background-image:none;line-height:normal;font-size:12px;margin-top:0px;overflow:auto;height:auto;width:auto;text-decoration:none;">快捷支付100%返现金，最高返百元！</a></span><span class="icon"></span><span>快捷支付</span><span class="gray">无需开通网银也能支付</span></h5>
+               <div class="shortcut_bank_box"> 
+                <table border="0" cellspacing="0" cellpadding="0" class="shortcut_bank_table">
+                  <tbody><tr>
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="164"><input type="radio" name="bank" checked="checked"><span class="pic"><img src="images/bank/pay_jianshe.gif" id="Repeater5_ctl00_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="165"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhaoshang.gif" id="Repeater5_ctl01_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="162"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_nongye.gif" id="Repeater5_ctl02_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="167"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_guangda.gif" id="Repeater5_ctl03_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="172"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_guangfa.gif" id="Repeater5_ctl04_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="166"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_pingan.gif" id="Repeater5_ctl05_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="170"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhongxin.gif" id="Repeater5_ctl06_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="171"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_minsheng.gif" id="Repeater5_ctl07_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="173"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_shanghai.gif" id="Repeater5_ctl08_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="174"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_huarun.gif" id="Repeater5_ctl09_imgBank5" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                     
+                  </tr>
+                </tbody></table></div>
+                <div class="btn02"><!--<a id="tab1showmorefastbank" href="javascript:void(0);">更多在线支付银行<span class="icon"></span></a>--></div>
+                <h5><span class="icon"></span><span>网银支付</span><span class="gray">您需要先拥有一张已开通网上支付功能的银行卡</span></h5>
+               <div class="shortcut_bank_box"> 
+                <table border="0" cellspacing="0" cellpadding="0" class="shortcut_bank_table shortcut_bank_web">
+                  <tbody>
+                  <tr>
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="48"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gs.gif" id="Repeater3_ctl00_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="4"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zs.gif" id="Repeater3_ctl01_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="6"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_js.gif" id="Repeater3_ctl02_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="67"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zg.gif" id="Repeater3_ctl03_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="45"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_ny.gif" id="Repeater3_ctl04_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="69"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_jt.gif" id="Repeater3_ctl05_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="57"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zx.gif" id="Repeater3_ctl06_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="59"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_ms.gif" id="Repeater3_ctl07_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="60"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gf.gif" id="Repeater3_ctl08_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="61"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_xy.gif" id="Repeater3_ctl09_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="70"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_pf.gif" id="Repeater3_ctl10_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="63"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_bj.gif" id="Repeater3_ctl11_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="72"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_yz.gif" id="Repeater3_ctl12_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="71"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gd.gif" id="Repeater3_ctl13_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="66"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_sz.gif" id="Repeater3_ctl14_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                                    
+                </tr>
+                </tbody></table></div>
+                <div class="btn02"><a id="tab1showmorenetbank" href="javascript:void(0);">更多在线支付银行<span class="icon"></span></a></div>
+              </div>
+              <div class="btn_next"><a id="A1" name="payhref" class="none" href="javascript:__doPostBack('A1','')">下一步</a></div>
+              </div> 
+            </div>
+            <div id="tab2" class="shortcut_bank" style="display: none;">
+            <div id="tab2secondpay" style="display:none;">
+                <div class="shortcut_bank_list list_deep">
+               <h5><span class="fanxian"><a href="http://t.dangdang.com/20131106_uovs" id="fp_promo_link3" target="_blank" style="background-image:none;line-height:normal;font-size:12px;margin-top:0px;overflow:auto;height:auto;width:auto;text-decoration:none;">快捷支付100%返现金，最高返百元！</a></span><span class="icon"></span><span>快捷支付</span><span class="gray">无需开通网银也能支付</span><a href="javascript:showiframe(2);" id="returnfastpaylink2" style="display:none;background-image:none;line-height:normal;font-size:12px;margin-top:0px;overflow:auto;height:auto;width:auto;text-decoration:none;">&lt;&lt; 返回我的快捷支付</a></h5> 
+                    <div id="tab2secondpayfastbank" style="display:none;">
+                        <div id="tab2fpiframediv" style="display:none;margin-left:44px;">
+                            <div class="shortcut_bank_list_loading" id="loading2"></div>
+                            <iframe id="tab2fpiframe" style="width: 650px; border: 0px; margin-top: 10px; display: none;" frameborder="0" allowtransparency="true" scrolling="no" src=""></iframe>
+                        </div>
+                        <div class="btn03">
+                        <a href="javascript:showallbank(2);" style="text-decoration:none;">选择其他银行&nbsp;&gt;&gt;</a>
+                        </div>
+                        <!--<div class="logo_cf"><img src="images/logo_cf.png" width="133" height="33"><span>快捷支付服务由当当网和财付通联合提供</span></div>-->
+                    </div>
+                    <div id="tab2secondpayfastbankall" style="display:block;">
+                    <div class="shortcut_bank_box">
+                    <table border="0" cellspacing="0" cellpadding="0" class="shortcut_bank_table">
+                  <tbody><tr>
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="164"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_jianshe.gif" id="Repeater8_ctl00_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="163"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_gongshang.gif" id="Repeater8_ctl01_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="165"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhaoshang.gif" id="Repeater8_ctl02_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="162"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_nongye.gif" id="Repeater8_ctl03_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="161"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhongguo.gif" id="Repeater8_ctl04_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="169"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_xingye.gif" id="Repeater8_ctl05_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="167"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_guangda.gif" id="Repeater8_ctl06_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="172"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_guangfa.gif" id="Repeater8_ctl07_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="166"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_pingan.gif" id="Repeater8_ctl08_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="170"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhongxin.gif" id="Repeater8_ctl09_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item" style="display: none;" hidebanktype="fastbank">
+                        <p class="bank_select" bid="171"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_minsheng.gif" id="Repeater8_ctl10_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="fastbank">
+                        <p class="bank_select" bid="173"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_shanghai.gif" id="Repeater8_ctl11_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                       
+                  </tr>
+                </tbody></table></div>
+                <div class="btn02"><a id="tab2showmorefastbank1" href="javascript:void(0);">更多快捷支付银行<span class="icon"></span></a></div>
+                </div>
+               <h5><span class="icon"></span><span>网银支付</span><span class="gray">您需要先拥有一张已开通网上支付功能的银行卡</span></h5>  
+                    <div id="tab2secondpaynetbank">
+                        <div id="tab2secondpaynetbankother" style="display:none;">
+                            <div class="btn03">
+                            <a href="javascript:showallbank(4);" style="text-decoration:none;">选择其他银行&nbsp;&gt;&gt;</a>
+                            </div>
+                        </div>
+                       <div id="tab2secondpaynetbankdefault">
+                        <p class="bank_select bank bank02" bid="0"><input name="bank" type="radio" value="1" checked="checked"><span class="pic"><img src="images/bank/pay_beijing.gif" id="imgDefault2" width="113" height="36"><span class="icon">信用</span></span></p>
+                        <div class="btn03">
+                        <a href="javascript:showallbank(4);" style="text-decoration:none;">选择其他银行&nbsp;&gt;&gt;</a>
+                        </div>
+                        <!--<div class="btn"><a id="A2" href="javascript:__doPostBack('A2','')">确认支付</a></div>-->
+                        </div>
+                        <div id="tab2secondpaynetbankall" style="display:none;">
+                        <div class="shortcut_bank_box">
+                                <table border="0" cellspacing="0" cellpadding="0" class="shortcut_bank_table shortcut_bank_web">
+                          <tbody>
+                          <tr>
+                            
+                                </tr><tr></tr><tr>                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="48"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gs.gif" id="Repeater10_ctl00_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="4"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zs.gif" id="Repeater10_ctl01_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="6"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_js.gif" id="Repeater10_ctl02_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="67"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zg.gif" id="Repeater10_ctl03_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="45"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_ny.gif" id="Repeater10_ctl04_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                </tr><tr></tr><tr>                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="69"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_jt.gif" id="Repeater10_ctl05_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="57"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zx.gif" id="Repeater10_ctl06_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="59"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_ms.gif" id="Repeater10_ctl07_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="60"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gf.gif" id="Repeater10_ctl08_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item">
+                                <p class="bank_select" bid="61"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_xy.gif" id="Repeater10_ctl09_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                </tr><tr></tr><tr>                     
+                                <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                                <p class="bank_select" bid="70"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_pf.gif" id="Repeater10_ctl10_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                                <p class="bank_select" bid="63"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_bj.gif" id="Repeater10_ctl11_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                                <p class="bank_select" bid="72"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_yz.gif" id="Repeater10_ctl12_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                                <p class="bank_select" bid="71"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gd.gif" id="Repeater10_ctl13_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                            
+                                                     
+                                <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                                <p class="bank_select" bid="66"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_sz.gif" id="Repeater10_ctl14_imgBank3" width="113" height="36"></span></p>
+                                <p class="hint"></p>                  
+                                </td>                                     
+                                            
+                        </tr>
+                        </tbody></table></div>
+                        <div class="btn02"><a id="tab2showmorenetbank1" href="javascript:void(0);">更多在线支付银行<span class="icon"></span></a></div>
+                        </div>
+                    </div> 
+                </div>
+               <div id="tab2button1" class="btn_next"><a id="tab2nextbutton" name="payhref" href="javascript:__doPostBack('tab2nextbutton','')" class="none">下一步</a></div> 
+            </div> 
+            <div id="tab2firstpay" style="display:block;">
+              <div class="shortcut_bank_list list_deep">
+                <h5><span class="fanxian"><a href="http://t.dangdang.com/20131106_uovs" id="fp_promo_link4" target="_blank" style="background-image:none;line-height:normal;font-size:12px;margin-top:0px;overflow:auto;height:auto;width:auto;text-decoration:none;">快捷支付100%返现金，最高返百元！</a></span><span class="icon"></span><span>快捷支付</span><span class="gray">无需开通网银也能支付</span></h5>
+               <div class="shortcut_bank_box"> 
+                <table border="0" cellspacing="0" cellpadding="0" class="shortcut_bank_table">
+                  <tbody><tr>
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="164"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_jianshe.gif" id="Repeater6_ctl00_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="163"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_gongshang.gif" id="Repeater6_ctl01_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="165"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhaoshang.gif" id="Repeater6_ctl02_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="162"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_nongye.gif" id="Repeater6_ctl03_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="161"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhongguo.gif" id="Repeater6_ctl04_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="169"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_xingye.gif" id="Repeater6_ctl05_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="167"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_guangda.gif" id="Repeater6_ctl06_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="172"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_guangfa.gif" id="Repeater6_ctl07_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="166"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_pingan.gif" id="Repeater6_ctl08_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="170"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_zhongxin.gif" id="Repeater6_ctl09_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item" style="display: none;" hidebanktype="fastbank">
+                        <p class="bank_select" bid="171"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_minsheng.gif" id="Repeater6_ctl10_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="fastbank">
+                        <p class="bank_select" bid="173"><input type="radio" name="bank"><span class="pic"><img src="images/bank/pay_shanghai.gif" id="Repeater6_ctl11_imgBank6" width="113" height="36"><span class="icon">快捷</span></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                       
+                  </tr>
+                </tbody></table></div>
+                <div class="btn02"><a id="tab2showmorefastbank" href="javascript:void(0);">更多快捷支付银行<span class="icon"></span></a></div>
+                <h5><span class="icon"></span><span>网银支付</span><span class="gray">您需要先拥有一张已开通网上支付功能的银行卡</span></h5>
+               <div class="shortcut_bank_box"> 
+                <table border="0" cellspacing="0" cellpadding="0" class="shortcut_bank_table shortcut_bank_web">
+                  <tbody>
+                  <tr>
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="48"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gs.gif" id="Repeater4_ctl00_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="4"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zs.gif" id="Repeater4_ctl01_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="6"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_js.gif" id="Repeater4_ctl02_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="67"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zg.gif" id="Repeater4_ctl03_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="45"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_ny.gif" id="Repeater4_ctl04_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="69"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_jt.gif" id="Repeater4_ctl05_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="57"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_zx.gif" id="Repeater4_ctl06_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="59"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_ms.gif" id="Repeater4_ctl07_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="60"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gf.gif" id="Repeater4_ctl08_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="61"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_xy.gif" id="Repeater4_ctl09_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="70"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_pf.gif" id="Repeater4_ctl10_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="63"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_bj.gif" id="Repeater4_ctl11_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="72"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_yz.gif" id="Repeater4_ctl12_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="71"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_gd.gif" id="Repeater4_ctl13_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item" style="display: none;" hidebanktype="netbank">
+                        <p class="bank_select" bid="66"><input type="radio" name="bank"><span class="pic"><img src="images/pic_bank_sz.gif" id="Repeater4_ctl14_imgBank3" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                                    
+                </tr>
+                </tbody></table></div>
+                <div class="btn02"><a id="tab2showmorenetbank" href="javascript:void(0);">更多在线支付银行<span class="icon"></span></a></div>
+              </div>
+              <div class="btn_next"><a name="payhref" class="none" href="javascript:__doPostBack('ctl06','')">下一步</a></div>
+            </div>
+            </div>
+            <div id="tab3" class="shortcut_bank" style="display: block;">
+            <div id="tab3secondpay" style="display:none;">
+                <div class="shortcut_bank_list list_deep">
+               <h5><span class="icon"></span><span>支付平台</span></h5>  
+                    <p class="bank_select bank bank02" bid="0"><input name="" type="radio" value="1" checked="checked"><span class="pic" style="text-align: center;padding-right: 0;width: 143px;"><img src="images/bank/pay_beijing.gif" id="imgDefault3" width="113" height="36" style="text-align: center;float:none;"></span></p>
+                        <div class="btn03">
+                        <a href="javascript:showallbank(6);" style="text-decoration:none;">选择其他银行&nbsp;&gt;&gt;</a>
+                        </div>
+                    <div class="btn"><a id="A3" name="payhref" href="javascript:__doPostBack('A3','')">下一步</a></div>
+                </div>
+            </div> 
+            <div id="tab3firstpay" style="display:block;">
+              <div class="shortcut_bank_list list_deep">
+                <h5><span class="icon"></span><span>支付平台</span></h5>
+               <div class="shortcut_bank_box"> 
+                <table border="0" cellspacing="0" cellpadding="0" class="shortcut_bank_table shortcut_bank_web">
+                  <tbody>
+                  <tr>
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="82"><input type="radio" name="bank"><span class="pic"><img src="images/pay_weixin.gif" id="Repeater2_ctl00_imgBank2" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="55"><input type="radio" name="bank" checked="checked"><span class="pic"><img src="images/pay_zxzf.gif" id="Repeater2_ctl01_imgBank2" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="53"><input type="radio" name="bank" checked="checked"><span class="pic"><img src="images/pic_bank_sj.gif" id="Repeater2_ctl02_imgBank2" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="51"><input type="radio" name="bank" checked="checked"><span class="pic"><img src="images/pay_zhifubao.gif" id="Repeater2_ctl03_imgBank2" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="36"><input type="radio" name="bank" checked="checked"><span class="pic"><img src="images/pay_kuaiqian.gif" id="Repeater2_ctl04_imgBank2" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                        </tr><tr></tr><tr>                     
+                        <td class="bank_item">
+                        <p class="bank_select" bid="46"><input type="radio" name="bank" checked="checked"><span class="pic"><img src="images/pay_yinlian.gif" id="Repeater2_ctl05_imgBank2" width="113" height="36"></span></p>
+                        <p class="hint"></p>                  
+                        </td>                                     
+                    
+                                             
+                        <td class="bank_item">
+                        <p class="bank_select" bid="44"><input type="radio" name="bank" checked="checked"><span class="pic"><img src="images/pay_caifutong.gif" id="Repeater2_ctl06_imgBank2" width="113" height="36"></span></p>
+                        <p class="hint"><span style="color:#f00;">使用彩贝积分 
+<br>直接抵扣现金</span></p>                  
+                        </td>                                     
+                                    
+                </tr>
+                </tbody></table></div>
+              </div>
+              <div class="btn_next"><a name="payhref" class="" onclick="javascript:return pay();" href="javascript:__doPostBack('ctl07','')">下一步</a></div>
+              </div>
+            </div>    
+            </div>
+          </div>
+          <div class="bottom_hint">
+            <div><a href="http://order.dangdang.com/orderdetails.aspx?modify=true&amp;orderid=7050902468" target="_blank">查看订单详情&gt;&gt;</a></div>
+            <div class="title">付款遇到问题：</div>
+            <p>什么是快捷支付？ <span class="gray">快捷支付是最便捷、最安全的网上支付方式。只需您银行卡绑定当当账号，网上支付时无需网银，支付时在登录状态下输入短信验证码即可完成付款。 </span></p>
+            <p>怎样在当当开通快捷支付？<span class="gray">支付时选择您拥有的银行卡，输入相应卡有效信息以及身份信息后，立即开通且支付，即可完成开通。第二次支付时在登录状态下直接输入短信验证码即可。</span></p>
+            
+            <p>怎么样关闭快捷支付？<span class="gray">您可以进入“我的当当-账户管理-快捷支付“，选择相应的银行卡进行关闭。或在快捷支付页面，点击管理我的快捷支付，进入快捷管理页面，选择相应的银行卡进行关闭。</span></p>
+            <p>快捷支付的限额是多少？<span class="gray">单笔单日8000元。</span></p>
+            <p>怎样修改我的快捷支付银行相关信息以及手机号？<span class="gray">如您的银行预留手机等发生变更，您可以进入“我的当当-账户管理-快捷支付“，选择相应的银行卡进行关闭。下次使用快捷支付时选择该银行，输入该银行卡的信息、重新输入银行预留手机号进行“立即开通并支付”，即可完成信息修改。</span></p>
+            <div><a href="http://support.dangdang.com/helpcenter/api_cms/helpcenter/question_sort/2241/180094.shtml" target="_blank">更多帮助&nbsp;&gt;&gt;</a></div>
+          </div>
+        </div>
