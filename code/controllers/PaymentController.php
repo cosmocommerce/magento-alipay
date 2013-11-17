@@ -40,7 +40,30 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
         {
             $session = Mage::getSingleton('checkout/session');
             $this->_order = Mage::getModel('sales/order');
-            $this->_order->loadByIncrementId($session->getLastRealOrderId());
+            if($orderId=$session->getAlipayPaymentOrderId()){
+            
+                $order = Mage::getModel('sales/order')->load($orderId);
+                if (!$order->getId())
+                {
+                    $this->norouteAction();
+                    return;
+                }
+                $order_cid=$order->getCustomerId();
+                $current_cid=0;
+                if(Mage::helper('customer')->getCustomer()){
+                    $current_cid=Mage::helper('customer')->getCustomer()->getId();
+                }
+                
+                if ($current_cid!=$order_cid)
+                {
+                    $this->norouteAction();
+                    return;
+                }
+            
+                $this->_order->load($orderId);
+            }else{
+                $this->_order->loadByIncrementId($session->getLastRealOrderId());
+            }
         }
         return $this->_order;
     }
@@ -53,10 +76,11 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
     public function payAction()
     {
         $session = Mage::getSingleton('checkout/session');
-        $session->setAlipayPaymentQuoteId($session->getQuoteId());
-
+        $orderId = (int) $this->getRequest()->getParam('order_id');
+        if ($orderId) {
+            $session->setAlipayPaymentOrderId($orderId);
+        }
         $order = $this->getOrder();
-
         if (!$order->getId())
         {
             $this->norouteAction();
@@ -78,8 +102,6 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
     public function redirectAction()
     {
         $session = Mage::getSingleton('checkout/session');
-        $session->setAlipayPaymentQuoteId($session->getQuoteId());
-
         $order = $this->getOrder();
 
         if (!$order->getId())

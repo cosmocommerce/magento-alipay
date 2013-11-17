@@ -1,9 +1,33 @@
 <?php
 
-$session = Mage::getSingleton('checkout/session');
-$_order = Mage::getModel('sales/order');
+$orderId = (int) $this->getRequest()->getParam('order_id');
+if (!$orderId) {
+    $session = Mage::getSingleton('checkout/session');
+    $_order = Mage::getModel('sales/order');
 
-$_order->loadByIncrementId($session->getLastRealOrderId());
+    $_order->loadByIncrementId($session->getLastRealOrderId());
+}else{
+
+    
+    $_order =Mage::getModel('sales/order')->load($orderId);
+    
+    $order_cid=$_order->getCustomerId();
+    $current_cid=0;
+    if(Mage::helper('customer')->getCustomer()){
+        $current_cid=Mage::helper('customer')->getCustomer()->getId();
+    }
+    
+    if ($current_cid!=$order_cid)
+    {
+        echo '订单错误，请联系我们';
+        exit();
+    }
+}
+if (!$_order->getId())
+{
+    echo '订单错误，请联系我们';
+    exit();
+}
 ?>
 <div class="shortcut_wrapper">
     <div class="shortcut_price">
