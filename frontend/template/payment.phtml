@@ -69,7 +69,10 @@ $_order->loadByIncrementId($session->getLastRealOrderId());
     </div>
     <div class="popup-cont">
         <p><i class="icon icon-warn-normal"></i>请您到新打开网银页面上进行支付，支付完成前请不要关闭该窗口。</p>
-        <p class="btn-bar"><a href="#" class="btn btn-small-orange mr-10" id="pay_suc_link">已完成支付</a><a href="javascript:pay_fail();" class="btn btn-small-grey" id="pay_fail_link">支付遇到问题</a></p>
+        <p class="btn-bar">
+            <button class="button btn-checkout" id="pay_suc_link" onclick="setLocation('<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>');"><span><span>已完成支付</span></span></button>
+            <button class="button btn-checkout" id="pay_fail_link" onclick="setLocation('<?php echo $this->getUrl('contacts'); ?>');"><span><span>支付遇到问题</span></span></button>
+        </p>
     </div>
 </div>
 <div class="popup-wrap popup-orderEnd" style="display:none;"  id="go_pay_error_window">
