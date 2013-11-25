@@ -1,6 +1,6 @@
 <?php
 
-class CosmoCommerce_Log_Model_Log extends Mage_Core_Model_Abstract
+class CosmoCommerce_Alipay_Model_Log extends Mage_Core_Model_Abstract
 {
     /**
      * Model initialization

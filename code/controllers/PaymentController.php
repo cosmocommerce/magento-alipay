@@ -34,8 +34,14 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
      *  @param    none
      *  @return	  Mage_Sales_Model_Order
      */
-    public function logTrans($trans){
-        Mage::log($trans);
+    public function logTrans($trans,$type){
+		$log = Mage::getModel('alipay/log');
+        $log->setLogAt(time());
+        $log->setOrderId($trans['out_trade_no']);
+        $log->setTradeNo(null);
+        $log->setType($type);
+        $log->setPostData(implode('|',$trans));
+        $log->save();
     }
     public function getOrder()
     {
@@ -193,7 +199,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 		$sendemail_wbcg=$alipay->getConfigData('sendemail_wbcg');
 		
 		if ( $mysign == $postData["sign"])  {
-            $this->logTrans('验证成功');
+            $this->logTrans($postData,$postData['trade_status']);//交易成功
 			
 			//以下是担保交易的交易状态
 			if($postData['trade_status'] == 'WAIT_BUYER_PAY') {                   //担保交易 交易创建 等待买家付款
@@ -380,12 +386,12 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 			}
 			else {
 				echo "fail";
-				$this->logTrans("订单失败");
+				$this->logTrans($postData,'Notify Sign Error');//交易失败
 			}	
 
 		} else {
 			echo "fail";
-            $this->logTrans("订单找不到");
+            $this->logTrans($postData,'Order Not Found');//交易订单未找到
 		}
     }
 

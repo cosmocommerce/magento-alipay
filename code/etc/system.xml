@@ -174,7 +174,7 @@
                             <show_in_store>1</show_in_store>
                         </transport>
                         <logistics translate="label comment">
-                            <label>Logistics</label>
+                            <label>Logistics Carrier</label>
 							  <comment>
 								<![CDATA[Default please select logistics to EXPRESS.<br /><span class="notice">This is a required field</span>]]>
 							  </comment>
@@ -186,7 +186,7 @@
                             <show_in_store>1</show_in_store>
                         </logistics>
                         <logistics_payment translate="label comment">
-                            <label>Logistics</label>
+                            <label>Logistics Payment</label>
 							  <comment>
 								<![CDATA[Default please select BUYER_PAY.<br /><span class="notice">This is a required field</span>]]>
 							  </comment>
@@ -197,6 +197,18 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </logistics_payment>
+                        <logistics_fees translate="label comment">
+                            <label>Logistics Fees</label>
+							  <comment>
+								<![CDATA[Default please input 0. Above 0 would override shipping fees at alipay.<br /><span class="notice">Becareful this would increase order amount at alipay</span>]]>
+							  </comment>
+                            <frontend_type>select</frontend_type>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </logistics_fees>
                         
                         <sandbox translate="label comment">
                             <label>Sandbox</label>

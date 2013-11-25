@@ -50,20 +50,14 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
      *
      *  @return	  string Target URL
      */
-    public function logTrans($trans){
-    
-        ini_set('display_errors',1);
+    public function logTrans($trans,$type){
 		$log = Mage::getModel('alipay/log');
-        print_r($log->getYes());
-        echo 'af';
-        exit();
         $log->setLogAt(time());
-        $log->setOrderId('1');
-        $log->setTradeNo('2');
-        $log->setType('1');
-        $log->setPostData($trans);
+        $log->setOrderId($trans['out_trade_no']);
+        $log->setTradeNo(null);
+        $log->setType($type);
+        $log->setPostData(implode('|',$trans));
         $log->save();
-        Mage::log($trans);
   
     }
     public function getAlipayUrl()
@@ -166,10 +160,9 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
         $order = $this->getOrder();
         if (!($order instanceof Mage_Sales_Model_Order)) {
             Mage::throwException($this->_getHelper()->__('Cannot retrieve order object'));
-        }
-		
-		
-		$converted_final_price=$order->getGrandTotal();
+        } 
+        $logistics_fees=$order->getShippingAmount();
+		$converted_final_price=$order->getGrandTotal()-$logistics_fees;
 		
 		if($this->getConfigData('service_type')=="create_forex_trade"){
 		
@@ -195,17 +188,20 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 				if(Mage::app()->getStore()->getBaseCurrencyCode()!=$toCur){
 				
 					$rate=Mage::getModel('directory/currency')->load($toCur)->getAnyRate($fromCur);
-					$converted_final_price= $order->getGrandTotal()/$rate;
+					$converted_final_price= $converted_final_price/$rate;
 					
 				
 				}else{
 					$rate=Mage::getModel('directory/currency')->load($toCur)->getAnyRate($fromCur);
-					$converted_final_price= $order->getGrandTotal()/$rate;
+					$converted_final_price= $converted_final_price/$rate;
 				
 				}
 			}else{
 				//$converted_final_price=$order->getGrandTotal();
 			}
+            if($this->getConfigData('logistics_fees')){
+                $logistics_fees=$this->getConfigData('logistics_fees');
+            }
 			$parameter = array('service'           => $this->getConfigData('service_type'),
 							   'partner'           => $this->getConfigData('partner_id'),
 							   'return_url'        => $this->getReturnURL(),
@@ -214,9 +210,9 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 							   'subject'           => $order->getRealOrderId(), 
 							   'body'              => $order->getRealOrderId(),
 							   'out_trade_no'      => $order->getRealOrderId(), // order ID
-							   'logistics_fee'     => '0.00', //because magento has shipping system, it has included shipping price
-							   'logistics_payment' => 'BUYER_PAY',  //always
-							   'logistics_type'    => 'EXPRESS', //Only three shipping method:POST,EMS,EXPRESS
+							   'logistics_fee'     => sprintf('%.2f', $logistics_fees), //because magento has shipping system, it has included shipping price
+							   'logistics_payment' => $this->getConfigData('logistics_payment'),  //always
+							   'logistics_type'    => $this->getConfigData('logistics'), //Only three shipping method:POST,EMS,EXPRESS
 							   'price'             => sprintf('%.2f', $converted_final_price) ,
 							   'payment_type'      => '1',
 							   'quantity'          => '1', // For the moment, the parameter of price is total price, so the quantity is 1.
@@ -251,7 +247,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 		$fields['sign'] = $mysign;
 		$fields['sign_type'] = $sign_type;
         
-        $this->logTrans($fields);
+        $this->logTrans($fields,'Place Order');
         return $fields;
     }
     
