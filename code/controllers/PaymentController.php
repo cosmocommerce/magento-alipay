@@ -14,7 +14,7 @@
  *
  * @category    CosmoCommerce
  * @package     CosmoCommerce_Alipay
- * @copyright   Copyright (c) 2009-2013 CosmoCommerce,LLC. (http://www.cosmocommerce.com)
+ * @copyright   Copyright (c) 2009-2014 CosmoCommerce,LLC. (http://www.cosmocommerce.com)
  * @contact :
  * T: +86-021-66346672
  * L: Shanghai,China
@@ -34,6 +34,9 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
      *  @param    none
      *  @return	  Mage_Sales_Model_Order
      */
+    public function logTrans($trans){
+        Mage::log($trans);
+    }
     public function getOrder()
     {
         if ($this->_order == null)
@@ -52,6 +55,9 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 $current_cid=0;
                 if(Mage::helper('customer')->getCustomer()){
                     $current_cid=Mage::helper('customer')->getCustomer()->getId();
+                }else{
+                    $this->_redirect('customer/account/login');
+                    return;
                 }
                 
                 if ($current_cid!=$order_cid)
@@ -81,15 +87,18 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
             $session->setAlipayPaymentOrderId($orderId);
         }
         $order = $this->getOrder();
+        if (!$order)
+        {
+            return;
+        }
         if (!$order->getId())
         {
-            $this->norouteAction();
             return;
         }
 
         $order->addStatusToHistory(
         $order->getStatus(),
-        Mage::helper('alipay')->__('Customer was redirected to payment center')
+        Mage::helper('alipay')->__('Customer was redirected to payment confirm page')
         );
         $order->save();
 
@@ -151,14 +160,14 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 		$mysign="";
 		$_input_charset='utf-8';
 		$transport=$alipay->getConfigData('transport');
-		
-		$gateway = $this->_gateway;
+		$sandbox=$alipay->getConfigData('sandbox');
+		if($sandbox){
+            $this->_gateway ="http://openapi.alipaydev.com/gateway.do";
+        }
+        $gateway = $this->_gateway;
 
-		if($transport == "https") {
-			$veryfy_url = $gateway. "service=notify_verify" ."&partner=" .$partner. "&notify_id=".$postData["notify_id"];
-		} else {
-			$veryfy_url = $gateway. "partner=".$partner."&notify_id=".$postData["notify_id"];
-		}	
+		$veryfy_url = $gateway. "service=notify_verify" ."&partner=" .$partner. "&notify_id=".$postData["notify_id"];
+		
 
 		$veryfy_result="";
 		$veryfy_result  = $this->get_verify($veryfy_url);
@@ -182,12 +191,12 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 		$sendemail_wbp=$alipay->getConfigData('sendemail_wbp');
 		$sendemail_wssg=$alipay->getConfigData('sendemail_wssg');
 		$sendemail_wbcg=$alipay->getConfigData('sendemail_wbcg');
-		Mage::log(strpos($veryfy_result,"true"));
 		
 		if ( $mysign == $postData["sign"])  {
+            $this->logTrans('验证成功');
 			
-			
-			if($postData['trade_status'] == 'WAIT_BUYER_PAY') {                   //等待买家付款
+			//以下是担保交易的交易状态
+			if($postData['trade_status'] == 'WAIT_BUYER_PAY') {                   //担保交易 交易创建 等待买家付款
 				
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
@@ -251,6 +260,104 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
                 }
 
 			}
+			else if($postData['trade_status'] == 'TRADE_CLOSED') {    //交易关闭
+			
+				$order = Mage::getModel('sales/order');
+				$order->loadByIncrementId($postData['out_trade_no']);
+                    $order->addStatusToHistory(
+                    $alipay->getStatus(),
+                    Mage::helper('alipay')->__('交易关闭'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                    }
+
+			}
+			else if($postData['trade_status'] == 'WAIT_SELLER_AGREE') {    //退款状态-退款协议等待卖家确认中
+			
+				$order = Mage::getModel('sales/order');
+				$order->loadByIncrementId($postData['out_trade_no']);
+                    $order->addStatusToHistory(
+                    $alipay->getStatus(),
+                    Mage::helper('alipay')->__('退款协议等待卖家确认中'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                    }
+
+			}
+			else if($postData['trade_status'] == 'SELLER_REFUSE_BUYER') {    //退款状态-卖家不同意协议，等待买家修改
+			
+				$order = Mage::getModel('sales/order');
+				$order->loadByIncrementId($postData['out_trade_no']);
+                    $order->addStatusToHistory(
+                    $alipay->getStatus(),
+                    Mage::helper('alipay')->__('卖家不同意协议，等待买家修改'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                    }
+
+			}
+			else if($postData['trade_status'] == 'WAIT_BUYER_RETURN_GOODS') {    //退款状态-退款协议达成，等待买家退货
+			
+				$order = Mage::getModel('sales/order');
+				$order->loadByIncrementId($postData['out_trade_no']);
+                    $order->addStatusToHistory(
+                    $alipay->getStatus(),
+                    Mage::helper('alipay')->__('退款协议达成，等待买家退货'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                    }
+
+			}
+			else if($postData['trade_status'] == 'WAIT_SELLER_CONFIRM_GOODS') {    //退款状态-等待卖家收货
+			
+				$order = Mage::getModel('sales/order');
+				$order->loadByIncrementId($postData['out_trade_no']);
+                    $order->addStatusToHistory(
+                    $alipay->getStatus(),
+                    Mage::helper('alipay')->__('等待卖家收货'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                    }
+
+			}
+			else if($postData['trade_status'] == 'REFUND_SUCCESS') {    //退款状态-退款成功
+			
+				$order = Mage::getModel('sales/order');
+				$order->loadByIncrementId($postData['out_trade_no']);
+                    $order->addStatusToHistory(
+                    $alipay->getStatus(),
+                    Mage::helper('alipay')->__('退款成功'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                    }
+
+			}
+			else if($postData['trade_status'] == 'REFUND_CLOSED') {    //退款状态-退款关闭
+			
+				$order = Mage::getModel('sales/order');
+				$order->loadByIncrementId($postData['out_trade_no']);
+                    $order->addStatusToHistory(
+                    $alipay->getStatus(),
+                    Mage::helper('alipay')->__('退款关闭'));
+                    try{
+                        $order->save();
+                        echo "success";
+                    } catch(Exception $e){
+                    }
+
+			}
 			else if($postData['trade_status'] == 'TRADE_FINISHED' || $postData['trade_status'] == "TRADE_SUCCESS") {   
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
@@ -273,11 +380,12 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 			}
 			else {
 				echo "fail";
-				Mage::log("x");
+				$this->logTrans("订单失败");
 			}	
 
 		} else {
 			echo "fail";
+            $this->logTrans("订单找不到");
 		}
     }
 

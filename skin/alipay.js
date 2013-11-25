@@ -267,7 +267,7 @@ var srp_tab2 = false;
 jQuery('#tab1fpiframe').mouseenter(function(){
     if(srp_tab1 == false){
         var url = jQuery('#fp_srp_ajax_tab1').val();
-        $.get( url, function(result){
+        jQuery.get( url, function(result){
             srp_tab1 = true;
         });
     } 
@@ -275,7 +275,7 @@ jQuery('#tab1fpiframe').mouseenter(function(){
 jQuery('#tab2fpiframe').mouseenter(function(){
     if(srp_tab2 == false){
         var url = jQuery('#fp_srp_ajax_tab2').val();
-        $.get( url, function(result){
+        jQuery.get( url, function(result){
             srp_tab2 = true;
         });
     } 
@@ -359,12 +359,12 @@ CrossDomain.receiveMessage(function(data)
 //        {
             if(jQuery('#select_tab').val() == 1){ 
                 var url = jQuery('#fp_srp_ajax_tab1').val();
-                $.get( url, function(result){
+                jQuery.get( url, function(result){
                 });
             }
             else if(jQuery('#select_tab').val() == 2){ 
                 var url = jQuery('#fp_srp_ajax_tab2').val();
-                $.get( url, function(result){
+                jQuery.get( url, function(result){
                 });
             }
             if(jQuery('iframe:visible').height()<226)
@@ -583,3 +583,265 @@ function showiframe(i)
 function G_GetTimeStmp() {
     return (new Date()).getTime();
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function mycallback(a) {
+    alert(a)
+}
+
+function AlsoPager(a) {
+    var b = jQuery("#also_page_num")[0].innerHTML,
+        c = jQuery("#also_page_count")[0].innerHTML;
+    if ("next" == a) {
+        if (b == c) return;
+        for (var d = 5 * b - 4, f = 5 * b + 1, h = 0; 5 > h; h++) {
+            var i = "#also_li_" + (d + h),
+                j = "#also_li_" + (f + h);
+            jQuery(i).hide(), jQuery(j).show()
+        }
+        jQuery("#also_pager_pre").removeClass("btn-prev-disabled"), jQuery("#also_pager_pre").addClass("btn-prev"), parseInt(b) + 1 == parseInt(c) && (jQuery("#also_pager_next").removeClass("btn-next"), jQuery("#also_pager_next").addClass("btn-next-disabled")), jQuery("#also_page_num")[0].innerHTML = parseInt(b) + 1
+    }
+    if ("pre" == a) {
+        if (1 == b) return;
+        for (var d = 5 * b - 4, f = 5 * b - 9, h = 0; 5 > h; h++) {
+            var i = "#also_li_" + (d + h),
+                j = "#also_li_" + (f + h);
+            jQuery(i).hide(), jQuery(j).show()
+        }
+        1 == parseInt(b) - 1 ? (jQuery("#also_pager_pre").removeClass("btn-prev"), jQuery("#also_pager_pre").addClass("btn-prev-disabled"), jQuery("#also_pager_next").removeClass("btn-next-disabled"), jQuery("#also_pager_next").addClass("btn-next")) : (jQuery("#also_pager_pre").removeClass("btn-prev-disabled"), jQuery("#also_pager_pre").addClass("btn-prev"), jQuery("#also_pager_next").removeClass("btn-next"), jQuery("#also_pager_next").addClass("btn-next-disabled")), c > parseInt(b) - 1 && (jQuery("#also_pager_next").removeClass("btn-next-disabled"), jQuery("#also_pager_next").addClass("btn-next")), jQuery("#also_page_num")[0].innerHTML = parseInt(b) - 1
+    }
+}
+
+function setCookie(a, b, c) {
+    var d = 1,
+        e = new Date;
+    e.setTime(e.getTime() + 1e3 * 60 * 60 * 24 * d), document.cookie = a + "=" + escape(b) + ";expires=" + e.toGMTString() + ";domain=" + c
+}
+
+function getCookie(a) {
+    var b, c = RegExp("(^| )" + a + "=([^;]*)(;|$)");
+    return (b = document.cookie.match(c)) ? b[2] : null
+}
+
+function getRamdom() {
+    return Math.floor(1001 * Math.random())
+}
+ 
+function go_pay(a) {
+    jQuery(".col-main").append("<div id='overlay' style='background:#000;display:block;z-index:300;width:1200px;position:absolute;top:0;left:0;'></div>"), jQuery(document).scrollTop();
+    var c = jQuery(document).scrollLeft(),
+        d = jQuery('.main-container').height(),//jQuery(document).height(),
+        e = jQuery('.col-main').outerWidth();
+    jQuery("#overlay").css({
+        opacity: "0.2",
+        height: d,
+        left: c,
+        width: e
+    });
+    
+    
+    window.open(a, 'alipay', "width="+e+", height="+d+", top="+top+", left="+left);
+    
+    var left  = (jQuery(window).width()/2)-(392/2),
+    top   = (jQuery(window).height()/2)-(160/2);
+    jQuery('#go_pay_window').css('left',left+"px");
+    jQuery('#go_pay_window').css('top',top+"px");
+    jQuery('#go_pay_window').fadeIn();
+}
+
+function pay_fail() {
+    jQuery("#overlay").remove(), jQuery("#go_pay_error_window").show(), jQuery("#go_pay_window").hide()
+}
+
+function pay_suc(order_id) {
+    var random = getRamdom(),
+        psc = jQuery("#pre_submit_order_hid").val(),
+        goi = jQuery("#grand_order_id_hid").val(),
+        haspaid = getCookie(goi);
+    null != haspaid ? order_id > 0 ? null == haspaid.match(order_id) && setCookie(goi, haspaid + "a" + order_id, "cashier.xx.com") : setCookie(goi, -1, "cashier.xx.com") : setCookie(goi, order_id, "cashier.xx.com"), jQuery.get("orderinfo.aspx", {
+        pre_submit_count: psc,
+        grand_order_id: goi,
+        id: random,
+        type: 2
+    }, function (data, textStatus) {
+        if (data = eval("(" + data + ")"), 0 == data.errorCode) {
+            if (jQuery("#order_list").html(data.order), 1 == data.pay_fin) {
+                var psc = jQuery("#pre_submit_order_hid").val();
+                psc > 0 ? (jQuery("#go_pay_window").hide(), pay_fin_continue_submit(psc)) : (jQuery("#go_pay_window").hide(), pay_fin())
+            } else jQuery("#go_pay_window").hide();
+            jQuery("#overlay").remove()
+        }
+    })
+}
+
+function pay_fin() {
+    jQuery("#pay_fin_window").show()
+}
+
+function pay_fin_continue_submit() {
+    jQuery("#pay_fin_continue_submit_window").show()
+}
+
+function window_close() {
+    jQuery("#overlay").length > 0 && jQuery("#overlay").remove(), jQuery(".popup-wrap.popup-orderEnd").fadeOut()
+}
+
+function SharePager(a) {
+    var b = jQuery("#page_num")[0].innerHTML,
+        c = jQuery("#page_count")[0].innerHTML;
+    if ("next" == a) {
+        if (b == c) return;
+        for (var d = 5 * b - 4, f = 5 * b + 1, h = 0; 5 > h; h++) {
+            var i = "#li" + (d + h),
+                j = "#li" + (f + h);
+            jQuery(i).hide(), jQuery(j).show()
+        }
+        jQuery("#pager_pre").removeClass("btn-prev-disabled"), jQuery("#pager_pre").addClass("btn-prev"), parseInt(b) + 1 == parseInt(c) && (jQuery("#pager_next").removeClass("btn-next"), jQuery("#pager_next").addClass("btn-next-disabled")), jQuery("#page_num")[0].innerHTML = parseInt(b) + 1
+    }
+    if ("pre" == a) {
+        if (1 == b) return;
+        for (var d = 5 * b - 4, f = 5 * b - 9, h = 0; 5 > h; h++) {
+            var i = "#li" + (d + h),
+                j = "#li" + (f + h);
+            jQuery(i).hide(), jQuery(j).show()
+        }
+        1 == parseInt(b) - 1 ? (jQuery("#pager_pre").removeClass("btn-prev"), jQuery("#pager_pre").addClass("btn-prev-disabled"), jQuery("#pager_next").removeClass("btn-next-disabled"), jQuery("#pager_next").addClass("btn-next")) : (jQuery("#pager_pre").removeClass("btn-prev-disabled"), jQuery("#pager_pre").addClass("btn-prev"), jQuery("#pager_next").removeClass("btn-next"), jQuery("#pager_next").addClass("btn-next-disabled")), c > parseInt(b) - 1 && (jQuery("#pager_next").removeClass("btn-next-disabled"), jQuery("#pager_next").addClass("btn-next")), jQuery("#page_num")[0].innerHTML = parseInt(b) - 1
+    }
+}
+
+function area_hide() {
+    jQuery("#share_area").hide()
+}
+
+function toTXWB() {
+    var a = "#pro_" + selectIndex,
+        b = "#img_" + selectIndex,
+        c = jQuery("#ddp_" + selectIndex)[0].innerText,
+        d = jQuery("#scp_" + selectIndex)[0].innerText;
+    void 0 == c && (c = jQuery("#ddp_" + selectIndex)[0].innerHTML), void 0 == d && (d = jQuery("#scp_" + selectIndex)[0].innerHTML);
+    var e = (100 * (c / d)).toFixed(0) + "\u6298";
+    0 == d && (e = "");
+    var f = encodeURI(jQuery(a)[0].title) + "\u2014\u2014" + e + "\uff0c\u5f53\u5f53\u4ef7:\uffe5" + c,
+        g = encodeURIComponent(jQuery(a)[0].href),
+        h = encodeURI("5c0f2c9284d44b54b9cf8b246e135407"),
+        i = encodeURI(jQuery(b)[0].src),
+        j = "xx",
+        k = "http://v.t.qq.com/share/share.php?title=" + f + "&url=" + g + "&appkey=" + h + "&site=" + j + "&pic=" + i;
+    window.open(k, "\u8f6c\u64ad\u5230\u817e\u8baf\u5fae\u535a", "width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no")
+}
+
+function toXLWB() {
+    var a = "#pro_" + selectIndex,
+        b = "#img_" + selectIndex,
+        c = jQuery("#ddp_" + selectIndex)[0].innerText,
+        d = jQuery("#scp_" + selectIndex)[0].innerText;
+    void 0 == c && (c = jQuery("#ddp_" + selectIndex)[0].innerHTML), void 0 == d && (d = jQuery("#scp_" + selectIndex)[0].innerHTML);
+    var e = (100 * (c / d)).toFixed(0) + "\u6298";
+    0 == d && (e = "");
+    var f = encodeURI(jQuery(a)[0].title) + "\u2014\u2014" + e + "\uff0c\u5f53\u5f53\u4ef7:\uffe5" + c,
+        g = encodeURIComponent(jQuery(a)[0].href),
+        h = "1315955721",
+        i = encodeURI(jQuery(b)[0].src),
+        j = "",
+        k = "http://service.weibo.com/share/share.php?title=" + f + "&url=" + g + "&site=" + j + "&pic=" + i + "&appkey=" + h;
+    window.open(k, "\u8f6c\u64ad\u5230\u65b0\u6d6a\u5fae\u535a", "width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no")
+}
+
+function toRR() {
+    var a = "#pro_" + selectIndex,
+        b = "#img_" + selectIndex,
+        c = jQuery("#ddp_" + selectIndex)[0].innerText,
+        d = jQuery("#scp_" + selectIndex)[0].innerText;
+    void 0 == c && (c = jQuery("#ddp_" + selectIndex)[0].innerHTML), void 0 == d && (d = jQuery("#scp_" + selectIndex)[0].innerHTML);
+    var e = (100 * (c / d)).toFixed(0) + "\u6298";
+    0 == d && (e = "");
+    var f = encodeURI(jQuery(a)[0].title + "\u2014\u2014" + e + "\uff0c\u5f53\u5f53\u4ef7:\uffe5" + c),
+        g = encodeURIComponent(jQuery(a)[0].href);
+    encodeURI("5c0f2c9284d44b54b9cf8b246e135407");
+    var i = encodeURI(jQuery(b)[0].src),
+        k = "http://widget.renren.com/dialog/share?title=" + f + "&resourceUrl=" + g + "&pic=" + i + "&description=test";
+    window.open(k, "\u8f6c\u64ad\u5230\u4eba\u4eba\u7f51", "width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no")
+}
+
+function toKaiXin() {
+    var a = "#pro_" + selectIndex,
+        b = "#img_" + selectIndex,
+        c = jQuery("#ddp_" + selectIndex)[0].innerText,
+        d = jQuery("#scp_" + selectIndex)[0].innerText;
+    void 0 == c && (c = jQuery("#ddp_" + selectIndex)[0].innerHTML), void 0 == d && (d = jQuery("#scp_" + selectIndex)[0].innerHTML);
+    var e = (100 * (c / d)).toFixed(0) + "\u6298";
+    0 == d && (e = "");
+    var f = encodeURIComponent(jQuery(a)[0].title) + "\u2014\u2014" + e + "\uff0c\u5f53\u5f53\u4ef7:\uffe5" + c,
+        g = encodeURIComponent(jQuery(a)[0].href);
+    encodeURIComponent("100016");
+    var i = encodeURIComponent(jQuery(b)[0].src),
+        j = "http://www.kaixin001.com/rest/records.php?content=" + f + "&url=" + g + "&pic=" + i + "&starid=0&aid=100016&style=11&stime=&sig=";
+    window.open(j, "\u8f6c\u64ad\u5230\u4eba\u4eba\u7f51", "width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no")
+}
+
+function toMail() {
+    var a = "#pro_" + selectIndex,
+        b = "#img_" + selectIndex,
+        c = jQuery("#ddp_" + selectIndex)[0].innerText,
+        d = jQuery("#scp_" + selectIndex)[0].innerText;
+    void 0 == c && (c = jQuery("#ddp_" + selectIndex)[0].innerHTML), void 0 == d && (d = jQuery("#scp_" + selectIndex)[0].innerHTML);
+    var e = 10 * (c / d);
+    e = e.toFixed(1), 0 == d && (e = "\u672a\u77e5");
+    var f = jQuery(a)[0].title,
+        g = jQuery(a)[0].href,
+        h = jQuery(b)[0].src;
+    jQuery("#mail_share_div").show(), jQuery(".m_url")[0].href = g, jQuery(".m_img_url")[0].src = h, jQuery(".m_title")[0].innerHTML = f, jQuery(".m_ddprice")[0].innerHTML = c, jQuery(".m_marketprice")[0].innerHTML = d, jQuery(".m_rebate")[0].innerHTML = e, jQuery(".m_url_text")[0].innerHTML = g, jQuery(".m_url_text")[0].href = g, jQuery(".m_sender")[0].innerHTML = "reminder@sendemail.xx.com", jQuery("#mail_share_div").css("left", jQuery(window).width() / 2 - jQuery("#mail_share_div").width() / 2), jQuery("#mail_share_div").css("top", jQuery(window).height() / 2 - jQuery("#mail_share_div").height() / 2 + jQuery(document).scrollTop())
+}
+
+function HideById(a) {
+    jQuery("#" + a).hide(), "mail_share_div" == a && (is_checked = !1, jQuery("#m_content")[0].value = "", jQuery(".m_receiver")[0].value = "", jQuery(".placeholder-text").removeClass("hide"), jQuery(".help-inline.help-inline-error.help-inline-middle").hide(), is_checked = !1)
+}
+
+function SendShareMail() {
+    if (!is_checked) return jQuery(".help-inline.help-inline-error.help-inline-middle").show(), void 0;
+    var a = jQuery(".m_receiver")[0].value,
+        b = jQuery("#m_content")[0].value,
+        c = jQuery(".m_title")[0].innerHTML,
+        d = jQuery(".m_marketprice")[0].innerHTML,
+        e = jQuery(".m_ddprice")[0].innerHTML,
+        f = jQuery(".m_rebate")[0].innerHTML,
+        g = jQuery(".m_url_text")[0].href,
+        h = jQuery(".m_img_url")[0].src,
+        i = Math.floor(1001 * Math.random());
+    jQuery.get("orderinfo.aspx", {
+        action: "mail_share",
+        receiver: a,
+        mail_content: b,
+        product_title: c,
+        market_price: d,
+        price: e,
+        discount: f,
+        url: g,
+        pic_url: h,
+        id: i
+    }, function (a) {
+        "1" == a ? (jQuery("#mail_share_div").hide(), jQuery("#m_send_result").css("left", jQuery(window).width() / 2 - jQuery("#m_send_result").width() / 2), jQuery("#m_send_result").css("top", jQuery(window).height() / 2 - jQuery("#m_send_result").height() / 2 + jQuery(document).scrollTop()), jQuery("#m_send_result").show(), jQuery("#m_send_result").fadeOut(3e3)) : (jQuery("#erroe_msg")[0].innerHTML = "\u53d1\u9001\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5", jQuery(".help-inline.help-inline-error.help-inline-middle").show())
+    })
+}

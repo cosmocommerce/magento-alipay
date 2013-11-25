@@ -50,10 +50,30 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
      *
      *  @return	  string Target URL
      */
+    public function logTrans($trans){
+    
+        ini_set('display_errors',1);
+		$log = Mage::getModel('alipay/log');
+        print_r($log->getYes());
+        echo 'af';
+        exit();
+        $log->setLogAt(time());
+        $log->setOrderId('1');
+        $log->setTradeNo('2');
+        $log->setType('1');
+        $log->setPostData($trans);
+        $log->save();
+        Mage::log($trans);
+  
+    }
     public function getAlipayUrl()
     {
-        $url = $this->_gateway;
-        return $url;
+		$alipay = Mage::getModel('alipay/payment');
+		$sandbox=$alipay->getConfigData('sandbox');
+		if($sandbox){
+            $this->_gateway ="http://openapi.alipaydev.com/gateway.do?";
+        }
+        return $this->_gateway;
     }
 
     /**
@@ -230,6 +250,8 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 		}
 		$fields['sign'] = $mysign;
 		$fields['sign_type'] = $sign_type;
+        
+        $this->logTrans($fields);
         return $fields;
     }
     

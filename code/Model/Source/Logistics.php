@@ -20,15 +20,15 @@
  * L: Shanghai,China
  * M:sales@cosmocommerce.com
  */
-class CosmoCommerce_Alipay_Model_Source_Servicetype
+class CosmoCommerce_Alipay_Model_Source_Logistics
 {
     public function toOptionArray()
     {
         return array(
-            array('value' => 'create_forex_trade', 'label' => Mage::helper('alipay')->__('Create Forex Trade')),
-            array('value' => 'trade_create_by_buyer', 'label' => Mage::helper('alipay')->__('Trade Create By Buyer')),
-            array('value' => 'create_direct_pay_by_user', 'label' => Mage::helper('alipay')->__('Create Direct Pay By User')),
-            array('value' => 'create_partner_trade_by_buyer', 'label' => Mage::helper('alipay')->__('Create Partner Trade By Buyer')),
+            array('value' => 'POST', 'label' => Mage::helper('alipay')->__('POST')),
+            array('value' => 'EXPRESS', 'label' => Mage::helper('alipay')->__('EXPRESS')),
+            array('value' => 'EMS', 'label' => Mage::helper('alipay')->__('EMS')),
+            array('value' => 'DIRECT', 'label' => Mage::helper('alipay')->__('DIRECT')),
         );
     }
 }

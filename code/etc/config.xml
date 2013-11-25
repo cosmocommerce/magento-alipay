@@ -25,7 +25,7 @@
 <config>
     <modules>
         <CosmoCommerce_Alipay>
-            <version>1.5.0</version>
+            <version>2.0.0</version>
         </CosmoCommerce_Alipay>
     </modules>
     <global>
@@ -37,6 +37,7 @@
             <alipay_mysql4>
                 <class>CosmoCommerce_Alipay_Model_Mysql4</class>
                 <entities>
+                    <log><table>alipay_log</table></log>
                     <api_debug><table>alipay_api_debug</table></api_debug>
                 </entities>
             </alipay_mysql4>

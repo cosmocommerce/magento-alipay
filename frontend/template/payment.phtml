@@ -53,24 +53,8 @@ if (!$_order->getId())
                         </ul>
                         </div>
                     </div>
-                    <button type="submit" title="下订单" class="button btn-checkout" onclick="payorder();"><span><span>下订单</span></span></button>
-                    <script type="text/javascript">
-                    function payorder(){
-                    
-                        var left  = (jQuery(window).width()/2)-(900/2),
-                        top   = (jQuery(window).height()/2)-(600/2);
-    
-    
-                        window.open('<?php echo $this->getUrl('alipay/payment/redirect'); ?>', 'alipay', "width=900, height=600, top="+top+", left="+left);
-                        
-                        var left  = (jQuery(window).width()/2)-(392/2),
-                        top   = (jQuery(window).height()/2)-(160/2);
-                        jQuery('#go_pay_window').show();
-                        jQuery('#go_pay_window').css('left',left+"px");
-                        jQuery('#go_pay_window').css('top',top+"px");
-
-                        
-                    }</script>
+                    <button type="submit" title="下订单" class="button btn-checkout" onclick="go_pay('<?php echo $this->getUrl('alipay/payment/redirect'); ?>');"><span><span>下订单</span></span></button>
+                    <script type="text/javascript"></script>
                     <?php
                     //echo $this->getChildHtml('redirect');
                     ?>
@@ -128,3 +112,4 @@ if (!$_order->getId())
         <p class="btn-bar"><a href="http://shopping.dangdang.com/shoppingcart/dispart_order.aspx" id="continue_submit_link" class="btn btn-small-orange mr-10" target="_blank">继续提交</a><a href="javascript:window_close();" class="btn btn-small-grey">取&nbsp;&nbsp;消</a></p>
    </div>
 </div>
+ 

@@ -7,3 +7,5 @@ CosmoCommerce_Alipay.xml                          app/etc/modules/CosmoCommerce_
 skin/alipay.css      skin/frontend/base/default/css/alipay.css
 skin/alipay.js      skin/frontend/base/default/js/alipay.js
 skin/alipay.gif      skin/frontend/base/default/images/alipay.gif
+skin/bg_icons.png      skin/frontend/base/default/images/bg_icons.png
+skin/bg_icons_p24.png      skin/frontend/base/default/images/bg_icons_p24.png

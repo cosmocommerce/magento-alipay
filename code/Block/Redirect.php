@@ -14,7 +14,7 @@
  *
  * @category	CosmoCommerce
  * @package 	CosmoCommerce_Alipay
- * @copyright	Copyright (c) 2009-2013 CosmoCommerce,LLC. (http://www.cosmocommerce.com)
+ * @copyright	Copyright (c) 2009-2014 CosmoCommerce,LLC. (http://www.cosmocommerce.com)
  * @contact :
  * T: +86-021-66346672
  * L: Shanghai,China
