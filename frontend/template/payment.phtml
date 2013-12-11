@@ -1,5 +1,18 @@
 <?php
 
+$alipay = Mage::getModel('alipay/payment');
+$has_jquery=$alipay->getConfigData('has_jquery');
+if($has_jquery){
+?>
+
+<script src="http://libs.baidu.com/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+$.noConflict();
+</script>
+<?php
+}
+
+
 $orderId = (int) $this->getRequest()->getParam('order_id');
 if (!$orderId) {
     $session = Mage::getSingleton('checkout/session');
