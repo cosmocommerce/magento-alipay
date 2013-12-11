@@ -231,24 +231,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
 		                </order_status>
-                        <order_status_payment_accepted translate="label">
-                            <label>Order status when payment accepted by Alipay</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_order_status</source_model>
-                            <sort_order>13</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-		                </order_status_payment_accepted>
-		                <order_status_payment_refused translate="label">
-                            <label>Order status when payment refused by Alipay</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>adminhtml/system_config_source_order_status</source_model>
-                            <sort_order>14</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-		                </order_status_payment_refused>
                         <allowspecific translate="label">
                             <label>Payment from applicable countries</label>
                             <frontend_type>allowspecific</frontend_type>

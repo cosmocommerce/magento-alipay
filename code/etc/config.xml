@@ -25,7 +25,7 @@
 <config>
     <modules>
         <CosmoCommerce_Alipay>
-            <version>2.0.0</version>
+            <version>2.0.3</version>
         </CosmoCommerce_Alipay>
     </modules>
     <global>
@@ -66,6 +66,52 @@
         <blocks>
             <alipay><class>CosmoCommerce_Alipay_Block</class></alipay>
     	</blocks>
+        <sales>
+            <!-- /**
+                  * @depraceted after 1.4.2, statuses are saved into sales_order_status table
+                  */
+            -->
+            <order>
+                <statuses>
+                    <alipay_wait_buyer_pay translate="label">
+                        <label>WAIT BUYER PAY</label>
+                    </alipay_wait_buyer_pay>
+                    <alipay_wait_seller_send_goods translate="label">
+                        <label>WAIT SELLER SEND GOODS</label>
+                    </alipay_wait_seller_send_goods>
+                    <alipay_wait_buyer_confirm_goods translate="label">
+                        <label>WAIT BUYER CONFIRM GOODS</label>
+                    </alipay_wait_buyer_confirm_goods>
+                    <alipay_trade_closed translate="label">
+                        <label>TRADE CLOSED</label>
+                    </alipay_trade_closed>
+                    <alipay_wait_seller_agree translate="label">
+                        <label>WAIT SELLER AGREE</label>
+                    </alipay_wait_seller_agree>
+                    <alipay_seller_refuse_buyer translate="label">
+                        <label>SELLER REFUSE BUYER</label>
+                    </alipay_seller_refuse_buyer>
+                    <alipay_wait_buyer_return_goods translate="label">
+                        <label>WAIT BUYER RETURN GOODS</label>
+                    </alipay_wait_buyer_return_goods>
+                    <alipay_wait_seller_confirm_goods translate="label">
+                        <label>WAIT SELLER CONFIRM GOODS</label>
+                    </alipay_wait_seller_confirm_goods>
+                    <alipay_refund_success translate="label">
+                        <label>REFUND SUCCESS</label>
+                    </alipay_refund_success>
+                    <alipay_refund_closed translate="label">
+                        <label>REFUND CLOSED</label>
+                    </alipay_refund_closed>
+                    <alipay_trade_success translate="label">
+                        <label>TRADE SUCCESS</label>
+                    </alipay_trade_success>
+                    <alipay_trade_finished translate="label">
+                        <label>TRADE FINISHED</label>
+                    </alipay_trade_finished>
+                </statuses>
+            </order>
+        </sales>
         <payment>
             <alipay_payment>
                 <languages>
