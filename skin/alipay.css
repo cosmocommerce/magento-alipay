@@ -24,7 +24,7 @@
 .shortcut_content h3{font-size:14px;font-weight:bold;padding-top:30px;}
 .shortcut_content h3 .gray{font-size:12px;padding-left:15px;font-weight:normal;}
 .shortcut_content h4{border-bottom:1px solid #ff8e42;height:38px;margin:30px auto 15px;}
-.shortcut_content h4 span{float:left;width:117px;height:33px;text-align:center;font:14px/33px '\5fae\8f6f\96c5\9ed1';background-color:#fff5e6;border:1px solid #f4e2d8;border-bottom:none;color:#544133;cursor:default;margin:4px 4px 0 0;}
+.shortcut_content h4 span{float:left;width:140px;height:33px;text-align:center;font:14px/33px '\5fae\8f6f\96c5\9ed1';background-color:#fff5e6;border:1px solid #f4e2d8;border-bottom:none;color:#544133;cursor:default;margin:4px 4px 0 0;}
 .shortcut_content h4 span.now{color:#f60;margin:0 4px -1px 0;height:38px;line-height:38px;background-color:#fff;border:1px solid #ff8e42;border-bottom:none;position:relative;}
 .shortcut_content h4 a{font:12px '\5B8B\4F53';float:right;margin-top:15px;}
 /*shortcut_bank*/
