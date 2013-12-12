@@ -32,7 +32,13 @@ class CosmoCommerce_Alipay_Block_Redirect extends Mage_Core_Block_Abstract
             ->setName('alipay_payment_checkout')
             ->setMethod('GET')
             ->setUseContainer(true);
-        foreach ($standard->setOrder($this->getOrder())->getStandardCheckoutFormFields() as $field => $value) {
+          
+        
+        $standard->setOrder($this->getOrder());    
+        if($this->getRequest()->getParam('bank')){
+           $standard->setBank($this->getRequest()->getParam('bank'));
+        }
+        foreach ($standard->getStandardCheckoutFormFields() as $field => $value) {
             $form->addField($field, 'hidden', array('name' => $field, 'value' => $value));
         }
 

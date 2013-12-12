@@ -25,6 +25,8 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
     protected $_code  = 'alipay_payment';
     protected $_formBlockType = 'alipay/form';
 	protected $_gateway="https://mapi.alipay.com/gateway.do?";
+    
+    protected $_bank  = '';
 
     // Alipay return codes of payment
     const RETURN_CODE_ACCEPTED      = 'Success';
@@ -59,6 +61,14 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
         $log->setPostData(implode('|',$trans));
         $log->save();
   
+    }
+    public function setBank($bank)
+    {
+		$this->_bank =$bank;
+    }
+    public function getBank()
+    {
+		return $this->_bank;
     }
     public function getAlipayUrl()
     {
@@ -220,7 +230,9 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 							   'seller_email'      => $this->getConfigData('seller_email')
 							);
 		}
-		
+        if($this->getBank()){
+            $parameter['defaultbank']=$this->getBank();
+        }
 		$parameter = $this->para_filter($parameter);
 		$security_code = $this->getConfigData('security_code');
 		$sign_type = 'MD5';

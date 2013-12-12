@@ -279,3 +279,61 @@ span.pic img{cursor:pointer;}
 .popup-cont-inner .btns .btn-next { right:0px; background-position:0 -102px;}
 .popup-cont-inner .btns .btn-next:hover { background-position:-36px -102px;}
 .popup-cont-inner .btns .btn-next-disabled {right:0px; background-position:-72px -102px; cursor:default;}
+
+
+.shortcut_content .ui-tabs-active h4 span{color:#f60;margin:0 4px -1px 0;height:38px;line-height:38px;background-color:#fff;border:1px solid #ff8e42;border-bottom:none;position:relative;}
+.shortcut_content h4{border-bottom:1px solid #ff8e42;height:38px;margin:30px auto 15px;float:left;}
+
+.shortcut_wrapper .shortcut_content{width:920px;border:5px solid #efeae5;padding:0;margin:0;}
+.shortcut_content h4 {
+border-bottom: 1px solid #ff8e42;
+height: 38px;
+margin: 0px auto 15px;
+float: left;
+}
+
+.bank_select input{
+float: left;
+height: 36px;
+line-height: 36px;
+}
+
+.icon{
+display: block;
+height: 36px;
+line-height: 30px;
+background-repeat: no-repeat;
+padding: 0 10px;
+color: #07f;
+font-weight: bold;
+white-space: nowrap;
+overflow: hidden;
+position: relative;
+z-index: 1;
+}
+.bank_item{float:left;width: 160px;}
+
+.ABC, .BJBANK, .BJRCB, .BOC, .CCB, .CDCB, .CEB, .CIB, .CITIC, .CMB, .CMBC, .COMM, .FDB, .GDB, .HZCB, .ICBC, .NBBANK, .PSBC, .SHBANK, .SHRCB, .SPABANK, .SPDB, .WZCB {text-indent: -9999px; background-image: url("../images/banks.png");} 
+.ABC {background-position: 0px -0px; } 
+.BJBANK {background-position: 0px -36px; } 
+.BJRCB {background-position: 0px -72px; } 
+.BOC {background-position: 0px -108px; } 
+.CCB {background-position: 0px -144px; } 
+.CDCB {background-position: 0px -180px; } 
+.CEB {background-position: 0px -216px; } 
+.CIB {background-position: 0px -252px; } 
+.CITIC {background-position: 0px -288px; } 
+.CMB {background-position: 0px -324px; } 
+.CMBC {background-position: 0px -360px; } 
+.COMM {background-position: 0px -396px; } 
+.FDB {background-position: 0px -432px; } 
+.GDB {background-position: 0px -468px; } 
+.HZCB {background-position: 0px -504px; } 
+.ICBC {background-position: 0px -540px; } 
+.NBBANK {background-position: 0px -576px; } 
+.PSBC {background-position: 0px -612px; } 
+.SHBANK {background-position: 0px -648px; } 
+.SHRCB {background-position: 0px -684px; } 
+.SPABANK {background-position: 0px -720px; } 
+.SPDB {background-position: 0px -756px; } 
+.WZCB {background-position: 0px -792px; } 

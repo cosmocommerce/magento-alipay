@@ -117,17 +117,6 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </service_type>
-                        <gateway translate="label">
-                            <label>Gateway</label>
-							  <comment>
-								<![CDATA[Deprecated field]]>
-							  </comment>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>4</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </gateway>
                         <partner_id translate="label comment">
                             <label>Partner ID</label>
 							  <comment>
@@ -160,19 +149,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </seller_email>
-                        <transport translate="label comment">
-                            <label>Transport</label>
-							  <comment>
-								<![CDATA[Default please select https.<br /><span class="notice">This is a required field</span>]]>
-							  </comment>
-                            <frontend_type>select</frontend_type>
-                            <source_model>alipay/source_transport</source_model>
-                            <sort_order>8</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                        </transport>
+                        </seller_email> 
                         <logistics translate="label comment">
                             <label>Logistics Carrier</label>
 							  <comment>
@@ -210,6 +187,18 @@
                             <show_in_store>1</show_in_store>
                         </logistics_fees>
                         
+                        <support_bank translate="label comment">
+                            <label>是否支持网银支付</label>
+							  <comment>
+								<![CDATA[需要在支付宝后台签订协议]]>
+							  </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </support_bank>
                         <has_jquery translate="label comment">
                             <label>Has jQuery Lib</label>
 							  <comment>
@@ -222,6 +211,18 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </has_jquery>
+                        <has_jqueryui translate="label comment">
+                            <label>Has jQuery UI Lib</label>
+							  <comment>
+								<![CDATA[We need jQuery lib to popup the payment window.<span class="notice">This is a required field</span>]]>
+							  </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </has_jqueryui>
                         
                         <sandbox translate="label comment">
                             <label>Sandbox</label>

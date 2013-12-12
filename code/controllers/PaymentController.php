@@ -164,13 +164,9 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 		$security_code=$alipay->getConfigData('security_code');
 		$sign_type='MD5';
 		$mysign="";
-		$_input_charset='utf-8';
-		$transport=$alipay->getConfigData('transport');
-		$sandbox=$alipay->getConfigData('sandbox');
-		if($sandbox){
-            $this->_gateway ="http://openapi.alipaydev.com/gateway.do";
-        }
-        $gateway = $this->_gateway;
+		$_input_charset='utf-8'; 
+		
+        $gateway = $alipay->getAlipayUrl();
 
 		$veryfy_url = $gateway. "service=notify_verify" ."&partner=" .$partner. "&notify_id=".$postData["notify_id"];
 		
