@@ -48,49 +48,57 @@ $status = Mage::getModel('sales/order_status');
 $status->setStatus('alipay_trade_closed')->setLabel('TRADE CLOSED')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
+    
+$status = Mage::getModel('sales/order_status')->load();
 //担保交易 退款状态-退款协议等待卖家确认中
 $status->setStatus('alipay_wait_seller_agree')->setLabel('WAIT SELLER AGREE')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
     
+$status = Mage::getModel('sales/order_status')->load();
 //担保交易 退款状态-卖家不同意协议，等待买家修改
 $status->setStatus('alipay_seller_refuse_buyer')->setLabel('SELLER REFUSE BUYER')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
     
+$status = Mage::getModel('sales/order_status')->load();
 //担保交易 退款状态-退款协议达成，等待买家退货
 $status->setStatus('alipay_wait_buyer_return_goods')->setLabel('WAIT BUYER RETURN GOODS')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
     
+$status = Mage::getModel('sales/order_status')->load();
 //担保交易 退款状态-等待卖家收货
 $status->setStatus('alipay_wait_seller_confirm_goods')->setLabel('WAIT SELLER CONFIRM GOODS')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
     
     
+$status = Mage::getModel('sales/order_status')->load();
 //担保交易 退款状态-退款成功
 $status->setStatus('alipay_refund_success')->setLabel('REFUND SUCCESS')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
     
     
+$status = Mage::getModel('sales/order_status')->load();
 //担保交易 退款状态-退款关闭
 $status->setStatus('alipay_refund_closed')->setLabel('REFUND CLOSED')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
     
+$status = Mage::getModel('sales/order_status')->load();
 //担保交易 退款状态-退款关闭
 $status->setStatus('alipay_trade_success')->setLabel('TRADE SUCCESS')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
     
+$status = Mage::getModel('sales/order_status')->load();
 //担保交易 退款状态-退款关闭
 $status->setStatus('alipay_trade_finished')->setLabel('TRADE FINISHED')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
     
     
-$status = Mage::getModel('sales/order_status')->load();
     
 $installer->endSetup();
