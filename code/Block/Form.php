@@ -28,4 +28,10 @@ class CosmoCommerce_Alipay_Block_Form extends Mage_Payment_Block_Form
         parent::_construct();
     }
 
+    protected function showLogo()
+    {
+		$alipay = Mage::getModel('alipay/payment');
+		$show_logo_checkout=$alipay->getConfigData('show_logo_checkout');
+        return $show_logo_checkout;
+    }
 }
