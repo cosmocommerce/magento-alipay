@@ -172,7 +172,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
             Mage::throwException($this->_getHelper()->__('Cannot retrieve order object'));
         } 
         $logistics_fees=$order->getShippingAmount();
-		$converted_final_price=$order->getGrandTotal()-$logistics_fees;
+		$converted_final_price=$order->getGrandTotal();//-$logistics_fees;
 		
 		if($this->getConfigData('service_type')=="create_forex_trade"){
 		
@@ -212,6 +212,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
             if($this->getConfigData('logistics_fees')){
                 $logistics_fees=$this->getConfigData('logistics_fees');
             }
+            $logistics_fees=0;
 			$parameter = array('service'           => $this->getConfigData('service_type'),
 							   'partner'           => $this->getConfigData('partner_id'),
 							   'return_url'        => $this->getReturnURL(),
