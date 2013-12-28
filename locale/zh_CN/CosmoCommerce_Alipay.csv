@@ -53,3 +53,6 @@
 "TRADE SUCCESS","交易成功"
 "TRADE FINISHED","交易成功"
 "Trade Create By Buyer","标准双接口收款"
+"Customer was redirected to Alipay","顾客进入支付宝准备支付"
+"Customer was redirected to payment confirm page","顾客进入网站支付确认页面"
+"Customer successfully returned from Alipay","顾客成功从支付宝返回"
