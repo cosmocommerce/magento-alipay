@@ -65,10 +65,10 @@ if (!$_order->getId())
     <div class="shortcut_content shortcut_content02">
         <div id="paycenter_area">
             <ul style="border-bottom: 1px solid #ff8e42;height: 38px;">
-                <li><a href="#tabs-1"><h4><span  >支付平台</span></h4></a></li>
                 <li><a href="#tabs-2"><h4><span  >网上银行(信用卡)</span></h4></a></li>
                 <li><a href="#tabs-3"><h4><span  >网上银行(借记卡)</span></h4></a></li>
                 <li><a href="#tabs-4"><h4><span  >网上银行(企业网银)</span></h4></a></li>
+                <li><a href="#tabs-1"><h4><span  >支付平台</span></h4></a></li>
             </ul>
             <div style="clear:both;"></div>
               
@@ -194,8 +194,11 @@ foreach($banks_options as $banks_option){
     <div class="popup-cont">
         <p><i class="icon icon-warn-normal"></i>请您到新打开网银页面上进行支付，支付完成前请不要关闭该窗口。</p>
         <p class="btn-bar">
-            <button class="button btn-checkout" id="pay_suc_link" onclick="setLocation('<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>');"><span><span>已完成支付</span></span></button>
-            <button class="button btn-checkout" id="pay_fail_link" onclick="setLocation('<?php echo $this->getUrl('contacts'); ?>');"><span><span>支付遇到问题</span></span></button>
+            <button class="button btn-checkout" id="pay_suc_link" onclick="javascript:window_close();"><span><span>重新支付</span></span></button>
+            <button class="button btn-checkout" id="pay_suc_link" onclick="setLocation('<?php echo $this->getUrl('sales/order/view',array('order_id'=>$_order->getId())); ?>');"><span><span>支付完成</span></span></button>
+            <div style="text-align:right;"><br />
+            <a class="button btn-checkout" id="pay_fail_link" onclick="setLocation('<?php echo $this->getUrl('contacts'); ?>');">支付遇到问题</a>
+            </div>
         </p>
     </div>
 </div>

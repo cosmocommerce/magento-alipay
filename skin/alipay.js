@@ -4,20 +4,20 @@ function setBank(bank){
 }
  
 function go_pay(a,bank) {
-    jQuery(".col-main").append("<div id='overlay' style='background:#000;display:block;z-index:300;width:1200px;position:absolute;top:0;left:0;'></div>"), jQuery(document).scrollTop();
+    jQuery("body").append("<div id='overlay' style='background:#000;display:block;z-index:300;width:1200px;position:absolute;top:0;left:0;'></div>"), jQuery(document).scrollTop();
     var c = jQuery(document).scrollLeft(),
-        d = jQuery('.main-container').height(),//jQuery(document).height(),
-        e = jQuery('.col-main').outerWidth();
+        d = jQuery(window).height() ,h = jQuery(document).height() ,//jQuery(document).height(),
+        e = jQuery(window).width();
     jQuery("#overlay").css({
         opacity: "0.2",
-        height: d,
+        height: h,
         left: c,
         width: e
     });
     if(bank){
-        window.open(a+"?bank="+bank, 'alipay', "width="+e+", height="+d+", top="+top+", left="+left);
+        window.open(a+"?bank="+bank);
     }else{
-        window.open(a, 'alipay', "width="+e+", height="+d+", top="+top+", left="+left);
+        window.open(a);
     }
     //console.log(jQuery('.col-main').offset().left);
     //console.log(e);

@@ -36,9 +36,6 @@
                     <fields>
                         <active translate="label">
                             <label>Enabled</label>
-							  <comment>
-								<![CDATA[激活插件总的功能]]>
-							  </comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>1</sort_order>
@@ -49,7 +46,7 @@
                         <title translate="label comment">
                             <label>Title</label>
 							  <comment>
-								<![CDATA[前台的支付名称。<br /><span class="notice">This is a required field</span>]]>
+								<![CDATA[Displayed at frontend checkout option.<br /><span class="notice">This is a required field</span>]]>
 							  </comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>2</sort_order>
@@ -58,49 +55,49 @@
                             <show_in_store>1</show_in_store>
                         </title>
                         <sendemail translate="label comment">
-                            <label>发送邮件：支付宝交易完成</label>
+                            <label>Send Email (Completed)</label>
 							  <comment>
-								<![CDATA[发送邮件：支付宝交易完成]]>
+								<![CDATA[即时到帐或担保交易-支付宝交易完成]]>
 							  </comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>10</sort_order>
+                            <sort_order>100</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </sendemail>
                         <sendemail_wbp translate="label comment">
-                            <label>发送邮件：仅担保交易</label>
+                            <label>Send Email (Order placed)</label>
 							  <comment>
-								<![CDATA[发送邮件：担保交易-等待买家付款]]>
+								<![CDATA[担保交易-等待买家付款]]>
 							  </comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>10</sort_order>
+                            <sort_order>100</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </sendemail_wbp>
                         <sendemail_wssg translate="label comment">
-                            <label>发送邮件：仅担保交易</label>
+                            <label>Send Email (Paid)</label>
 							  <comment>
-								<![CDATA[发送邮件：担保交易-买家付款成功,等待卖家发货]]>
+								<![CDATA[担保交易-买家付款成功,等待卖家发货]]>
 							  </comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>10</sort_order>
+                            <sort_order>100</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </sendemail_wssg>
                         <sendemail_wbcg translate="label comment">
-                            <label>发送邮件：仅担保交易</label>
+                            <label>Send Email (Shipped)</label>
 							  <comment>
-								<![CDATA[发送邮件：担保交易-卖家已经发货等待买家确认]]>
+								<![CDATA[担保交易-卖家已经发货等待买家确认]]>
 							  </comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <sort_order>10</sort_order>
+                            <sort_order>100</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>

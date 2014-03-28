@@ -11,9 +11,9 @@
 .shortcut_bank_list h5,.shortcut_bank_list .bank,.shortcut_bank_table td p,.shortcut_bank_box{zoom:1;}
 
 /*shortcut_wrapper*/
-.shortcut_wrapper{width:960px;margin:15px auto 0;font:12px 'Arial','\5B8B\4F53';color:#404040;}
-.shortcut_wrapper .shortcut_price{width:876px;padding:15px 42px 30px;color:#8d8c8b;background-color:#f7f4f0;}
-.shortcut_wrapper .shortcut_price p{padding-top:8px;}
+.shortcut_wrapper{width:100%;margin:0 auto;color:#404040;}
+.shortcut_wrapper .shortcut_price{width:100%;padding:0;color:#8d8c8b;background-color:#f7f4f0;}
+.shortcut_wrapper .shortcut_price p{padding: 10px;margin: 0;}
 .shortcut_wrapper .shortcut_price .price{color:#404040;font:14px 'Arial','\5fae\8f6f\96c5\9ed1';}
 .shortcut_wrapper .shortcut_price span{display:inline-block;padding-right:50px;}
 .shortcut_wrapper .shortcut_price .red{font:bold 20px 'Arial';}
@@ -31,7 +31,10 @@
 .shortcut_bank{padding-top:15px;width:950px;margin:0 -15px;position:relative;}
 .shortcut_bank .shortcut_bank_list{padding:15px 0 15px;position:relative;}
 .shortcut_bank .list_deep{background-color:#fdfbf8;zoom:1;}
-.shortcut_bank_list h5{padding:0 0 5px 15px;height:16px;line-height:16px;}
+.shortcut_bank_list h5{padding: 15px;
+height: 16px;
+line-height: 16px;
+margin: 0;}
 .shortcut_bank_list h5 span,.shortcut_bank_list h5 a{float:left;font-size:14px;}
 .shortcut_bank_list h5 .icon{width:4px;height:14px;line-height:0;font-size:0;overflow:hidden;background-color:#fea125;margin-right:12px;font-size:12px;}
 .shortcut_bank_list h5 .gray{margin:0 12px 0 10px;font-size:12px;}
@@ -62,9 +65,9 @@
 /*shortcut_bank_table*/
 .shortcut_content02 .shortcut_bank{margin:-15px 0 0;width:920px;overflow:hidden;padding-top:0;}
 .shortcut_content02 h4 span.now{background-color:#FDFBF8;}
-.shortcut_bank_table{width:896px;float:left;}
+.shortcut_bank_table{width:100%;float:left;}
 .shortcut_bank_table td{width:180px;vertical-align:top;text-align:left;padding-top:10px;}
-.shortcut_bank_box{ position:relative;padding-left:24px;width: 896px;}
+.shortcut_bank_box{ position:relative;padding-left:24px;width: 100%;}
 .shortcut_bank_table td p input{float:left;margin:13px 0 0;margin:8px -4px 0\9;position:relative;}
 .shortcut_bank_table td p .pic{float:right;border:1px solid #ccc;margin-right:11px;padding-right:30px;position:relative;background:#fff;width:113px;_display:inline;}
 .shortcut_bank_table td p.hint{color:#f60;font-size:12px;padding:5px 0 0 23px;width:142px;overflow:hidden;line-height:16px;}
@@ -125,7 +128,7 @@ span.pic img{cursor:pointer;}
 .popup-wrap .btn-large-orange:hover { color:#fff; background-position:0 -258px; }
 .popup-wrap .color-orange { color:#ff3c00;}
 .popup-wrap .popup-title { position:relative; height:23px; line-height:23px; background:#e2dedb; }
-.popup-wrap .popup-title h3 { line-height: 23px;float:left; color:#646464; font-weight:bold; padding-left:10px; margin-right:20px; } 
+.popup-wrap .popup-title h3 { line-height: 23px;float:left; color:#646464; font-weight:bold; padding-left:10px; margin-right:20px;margin-top: 0; } 
 .popup-wrap .popup-title .btn-popup-close { position:absolute; right:0px; top:0px; }
 .btn-popup-close { display:inline-block; width:23px; height:23px; background:url(../images/bg_icons_p24.png) no-repeat 0 -69px; _background:url(../images/bg_icons.png) no-repeat 0 -69px;}
 .btn-popup-close:hover { background-position:-33px -69px;}
@@ -284,11 +287,12 @@ span.pic img{cursor:pointer;}
 .shortcut_content .ui-tabs-active h4 span{color:#f60;margin:0 4px -1px 0;height:38px;line-height:38px;background-color:#fff;border:1px solid #ff8e42;border-bottom:none;position:relative;}
 .shortcut_content h4{border-bottom:1px solid #ff8e42;height:38px;margin:30px auto 15px;float:left;}
 
-.shortcut_wrapper .shortcut_content{width:920px;border:5px solid #efeae5;padding:0;margin:0;}
+.shortcut_wrapper .shortcut_content{width: 100%;
+border: none;padding:0;margin:0;}
 .shortcut_content h4 {
 border-bottom: 1px solid #ff8e42;
 height: 38px;
-margin: 0px auto 15px;
+margin: 0px auto 0;
 float: left;
 }
 
@@ -337,3 +341,8 @@ z-index: 1;
 .SPABANK {background-position: 0px -720px; } 
 .SPDB {background-position: 0px -756px; } 
 .WZCB {background-position: 0px -792px; } 
+
+
+#paycenter_area{
+border:5px solid #efeae5;
+}

@@ -386,7 +386,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
 			else if($postData['trade_status'] == 'TRADE_FINISHED' ){  //担保交易
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
-                if ($order->getStatus() == 'alipay_wait_buyer_confirm_goods' ) {
+                if ($order->getStatus() == 'alipay_wait_buyer_confirm_goods' || $order->getStatus() == 'alipay_wait_buyer_pay') {
                     //$order->setAlipayTradeno($postData['trade_no']);
                     $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
                     if($sendemail){
@@ -407,7 +407,7 @@ class CosmoCommerce_Alipay_PaymentController extends Mage_Core_Controller_Front_
             
 				$order = Mage::getModel('sales/order');
 				$order->loadByIncrementId($postData['out_trade_no']);
-                if ($order->getState() == 'new'  ) {
+                if ($order->getState() == 'new' || $order->getState() == 'new'  ) {
                     //$order->setAlipayTradeno($postData['trade_no']);
                     $order->setStatus(Mage_Sales_Model_Order::STATE_PROCESSING);
                     if($sendemail){
