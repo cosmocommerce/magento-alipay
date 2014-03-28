@@ -212,9 +212,12 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
             if($this->getConfigData('logistics_fees')){
                 $logistics_fees=$this->getConfigData('logistics_fees');
             }
+            
+            
+            
             $logistics_fees=0;
-			$parameter = array('service'           => $this->getConfigData('service_type'),
-							   'partner'           => $this->getConfigData('partner_id'),
+			$parameter = array('service'           => trim($this->getConfigData('service_type')),
+							   'partner'           => trim($this->getConfigData('partner_id')),
 							   'return_url'        => $this->getReturnURL(),
 							   'notify_url'        => $this->getNotifyURL(),
 							   '_input_charset'    => 'utf-8',
@@ -232,10 +235,11 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 							);
 		}
         if($this->getBank()){
+            $parameter['paymethod']="bankPay";
             $parameter['defaultbank']=$this->getBank();
         }
 		$parameter = $this->para_filter($parameter);
-		$security_code = $this->getConfigData('security_code');
+		$security_code = trim($this->getConfigData('security_code'));
 		$sign_type = 'MD5';
 		
 		$sort_array = array();
