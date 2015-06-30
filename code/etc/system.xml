@@ -185,7 +185,7 @@
                         </logistics_fees>
                         
                         <support_bank translate="label comment">
-                            <label>是否支持网银支付</label>
+                            <label>Support Online Banking</label>
 							  <comment>
 								<![CDATA[需要在支付宝后台签订协议]]>
 							  </comment>

@@ -87,7 +87,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
      */
 	protected function getReturnURL()
 	{
-		return Mage::getUrl('alipay/payment/notify/', array('_secure' => true));
+		return Mage::getUrl('alipay/payment/success/', array('_secure' => true));
 	}
 
 	/**
@@ -185,7 +185,7 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
 							   'body'              => $order->getRealOrderId(),
 							   'out_trade_no'      => $order->getRealOrderId(), // order ID
 							   'total_fee'             => sprintf('%.2f', $converted_final_price) ,
-							   'currency'      => 'USD'
+							   'currency'      => $this->getConfigData('base_currency')
 							);
 		}else{
 		
@@ -266,6 +266,22 @@ class CosmoCommerce_Alipay_Model_Payment extends Mage_Payment_Model_Method_Abstr
         
         $this->logTrans($fields,'Place Order');
         return $fields;
+    }
+
+    /**
+     * Invoice the order based on the transaction details
+     *
+     * @param Mage_Sales_Model_Order $order
+     * @param Varien_Object $response
+    */
+    public function processOrder(Mage_Sales_Model_Order $order, $response)
+    {
+        $payment = $order->getPayment();
+        $payment->setTransactionId($response->getTradeNo())
+            ->setIsTransactionClosed(0);
+        $payment->registerCaptureNotification($payment->getBaseAmountAuthorized());
+
+        $order->save();
     }
     
 	public function sign($prestr) {

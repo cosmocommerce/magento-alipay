@@ -24,6 +24,7 @@ $installer = $this;
 
 $installer->startSetup();
 
+/*
 
 $status = Mage::getModel('sales/order_status');
 //担保交易 交易创建 等待买家付款
@@ -99,6 +100,6 @@ $status->setStatus('alipay_trade_finished')->setLabel('TRADE FINISHED')
     ->assignState(Mage_Sales_Model_Order::STATE_NEW) //for example, use any available existing state
     ->save();
     
-    
+*/
     
 $installer->endSetup();
