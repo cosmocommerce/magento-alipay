@@ -197,8 +197,7 @@
                   <payment_action>authorize</payment_action>
                   <allowspecific>0</allowspecific>
                   <transaction_type>O</transaction_type>
-                  <!-- TODO: Make currency configurable in system.xml -->
-                  <base_currency>EUR</base_currency>
+                  <base_currency>USD</base_currency>
             </alipay_payment>
         </payment>
     </default>

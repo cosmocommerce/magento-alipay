@@ -242,6 +242,19 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
 		                </order_status>
+                        <base_currency translate="label">
+                            <label>Order base currency</label>
+                            <comment>
+                                <![CDATA[Make sure the currency matches the settlement currency on the contract. See <a href="https://global.alipay.com/faq/mainquestions.htm#q17" target="_blank">FAQ</a> for more details
+                                <br /><span class="notice">This is a required field</span>]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_currency</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </base_currency>
                         <allowspecific translate="label">
                             <label>Payment from applicable countries</label>
                             <frontend_type>allowspecific</frontend_type>
