@@ -25,7 +25,7 @@
 <config>
     <modules>
         <CosmoCommerce_Alipay>
-            <version>2.0.3</version>
+            <version>2.1.0</version>
         </CosmoCommerce_Alipay>
     </modules>
     <global>
@@ -194,8 +194,10 @@
             <alipay_payment>
                   <model>alipay/payment</model>
                   <title>Alipay</title>
+                  <payment_action>authorize</payment_action>
                   <allowspecific>0</allowspecific>
                   <transaction_type>O</transaction_type>
+                  <base_currency>USD</base_currency>
             </alipay_payment>
         </payment>
     </default>

@@ -1,61 +1,15 @@
- 
 <?php
 
-$alipay = Mage::getModel('alipay/payment');
-$has_jquery=$alipay->getConfigData('has_jquery');
-$has_jqueryui=$alipay->getConfigData('has_jqueryui');
-if(!$has_jquery){
-?>
-<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+/** @var $this CosmoCommerce_Alipay_Block_Payment */
 
-<?php
-}
-if(!$has_jqueryui){
-?>
-<script src="http://libs.baidu.com/jqueryui/1.10.2/jquery-ui.min.js"></script>
+$_order = $this->getOrder();
 
-<?php
-}
 ?>
-
 <script type="text/javascript">
-jQuery.noConflict();
 jQuery(function() {
 	jQuery( "#paycenter_area" ).tabs();
 });
 </script>
-<?php
-
-
-$orderId = (int) $this->getRequest()->getParam('order_id');
-if (!$orderId) {
-    $session = Mage::getSingleton('checkout/session');
-    $_order = Mage::getModel('sales/order');
-
-    $_order->loadByIncrementId($session->getLastRealOrderId());
-}else{
-
-    
-    $_order =Mage::getModel('sales/order')->load($orderId);
-    
-    $order_cid=$_order->getCustomerId();
-    $current_cid=0;
-    if(Mage::helper('customer')->getCustomer()){
-        $current_cid=Mage::helper('customer')->getCustomer()->getId();
-    }
-    
-    if ($current_cid!=$order_cid)
-    {
-        echo '订单错误，请联系我们';
-        exit();
-    }
-}
-if (!$_order->getId())
-{
-    echo '订单错误，请联系我们';
-    exit();
-}
-?>      
 <div class="shortcut_wrapper">
     <div class="shortcut_price">
         <p class="price">支付金额：<span class="red"><?php echo $this->helper('checkout')->formatPrice($_order->getGrandTotal()) ?> </span></span></p>
