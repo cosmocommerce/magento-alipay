@@ -1,5 +1,8 @@
-#Magento Alipay Payment Gateway Module![project status](http://stillmaintained.com/sidealice/aliyun-paas.png)#
+#Magento Alipay Payment Gateway Module![project status]#
 ==============
+
+Because magento2 is a big different to magento1, we created another git for magento2 version: https://github.com/cosmocommerce/magento2-module-alipay/
+
 
 Support payment types:
 * Create Forex Trade:Internation Payments Type
