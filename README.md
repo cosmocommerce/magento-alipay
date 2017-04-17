@@ -1,4 +1,4 @@
-#Magento Alipay Payment Gateway Module![project status]#
+# Magento Alipay Payment Gateway Module![project status] #
 ==============
 
 Because magento2 is a big different to magento1, we created another git for magento2 version: https://github.com/cosmocommerce/magento2-module-alipay/
@@ -12,13 +12,13 @@ Support payment types:
 
 If you have trouble to choose the type please contact payment@cosmocommerce.com 
 
-##Issues##
+## Issues ##
 
 Before change the order status need to compare the status flow.
 
-##Change Log##
+## Change Log ##
 
-##Requirements##
+## Requirements ##
 
 This module has the following requirements:
 
@@ -28,7 +28,7 @@ Dependency:
 
  - Magneto 1.x
 
-##Installation##
+## Installation ##
 
 1 Install modman:
 
